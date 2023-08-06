@@ -44,7 +44,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             string webRootPath = @Directory.GetCurrentDirectory();
 
             builder.Services.AddHttpContextAccessor();
-            //builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<CommentEntity, CommentContract, CommentContract, CommentContract>());
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
    
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
@@ -76,7 +75,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
                 await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
-                await service.Initialize("Comment", config.GetValue<string>("RootAddresses:whitelabel"), typeof(AuthenticationsContext));
+                await service.Initialize("Authentication", config.GetValue<string>("RootAddresses:whitelabel"), typeof(AuthenticationsContext));
             }
 
             StartUp startUp = new StartUp();

@@ -11,7 +11,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
             _builder = builder;
         }
 
-        public DbSet<CommentEntity> Comments { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -25,7 +25,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<CommentEntity>(model =>
+            modelBuilder.Entity<UserEntity>(model =>
             {
                 model.HasKey(x => x.Id);
             });
