@@ -1,0 +1,115 @@
+﻿{
+	"Environments": [
+		{
+			"Name": "CommentsMicroservice",
+			"GenerationPath": "ExecutionPath\\EasyMicroservices.CommentesMicroservice.Logics\\Mappers",
+			"BuildPath": "ExecutionPath\\EasyMicroservices.CommentesMicroservice.WebApi\\bin\\Debug\\net7.0",
+			"NameSpaces": [
+				"EasyMicroservices.Mapper.Interfaces",
+				"EasyMicroservices.Mapper.CompileTimeMapper.Interfaces",
+				"System.Linq"
+			],
+			"Groups": [
+				{
+					"DisplayName": "CommentEntity_CommentContract",
+					"MapFrom": {
+						"Name": "CommentEntity",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "CommentContract",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "Children"
+						},
+						{
+							"Name": "Parent"
+						}
+					],
+					"CustomProperties": []
+				},
+				{
+					"DisplayName": "MicroserviceContextTableEntity_MicroserviceContextTableContract",
+					"MapFrom": {
+						"Name": "MicroserviceContextTableEntity",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "MicroserviceContextTableContract",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Responses",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "ContextTable"
+						},
+						{
+							"Name": "Microservice"
+						}
+					],
+					"CustomProperties": [
+						{
+							"FromName": "ContextName",
+							"ToName": "$fromObject.ContextTable?.ContextName"
+						},
+						{
+							"FromName": "MicroserviceName",
+							"ToName": "$fromObject.Microservice?.Name"
+						},
+						{
+							"FromName": "TableName",
+							"ToName": "$fromObject.ContextTable?.TableName"
+						}
+					]
+				},
+				{
+					"DisplayName": "MicroserviceEntity_MicroserviceContract",
+					"MapFrom": {
+						"Name": "MicroserviceEntity",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "MicroserviceContract",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "MicroserviceContextTables"
+						}
+					],
+					"CustomProperties": [
+						
+					]
+				},
+				{
+					"DisplayName": "ContextTableEntity_ContextTableContract",
+					"MapFrom": {
+						"Name": "ContextTableEntity",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "ContextTableContract",
+						"Namespace": "EasyMicroservices.CommentesMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.CommentesMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "MicroserviceContextTables"
+						}
+					],
+					"CustomProperties": [
+
+					]
+				}
+			]
+		}
+	]
+}

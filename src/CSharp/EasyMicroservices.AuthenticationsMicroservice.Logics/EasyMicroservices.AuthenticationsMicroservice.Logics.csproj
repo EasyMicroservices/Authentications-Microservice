@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>EasyMicroservices.AuthenticationsMicroservice</RootNamespace>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Mapper.CompileTimeMapper" Version="0.0.0.5" />
+    <PackageReference Include="EasyMicroservices.Mapper.SerializerMapper" Version="0.0.0.2" />
+    <PackageReference Include="EasyMicroservices.Serialization.Newtonsoft.Json" Version="0.0.0.3" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="DatabaseLogics\" />
+    <Folder Include="Mappers\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.Database\EasyMicroservices.AuthenticationsMicroservice.Database.csproj" />
+  </ItemGroup>
+  
+</Project>
