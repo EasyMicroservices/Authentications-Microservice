@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>EasyMicroservices.AuthenticationsMicroservice</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\Documents\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+	  <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.2" />
+	  <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.13" />
+	  <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.9" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.Domain\EasyMicroservices.AuthenticationsMicroservice.Domain.csproj" />
+  </ItemGroup>
+  
+</Project>
