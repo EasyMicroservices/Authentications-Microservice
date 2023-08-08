@@ -17,8 +17,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseInMemoryDatabase("AuthDb");
-            optionsBuilder.UseSqlServer(config.GetConnectionString("local"));
+            optionsBuilder.UseInMemoryDatabase("AuthDb");
+            //optionsBuilder.UseSqlServer(config.GetConnectionString("local"));
         }
     }
 }

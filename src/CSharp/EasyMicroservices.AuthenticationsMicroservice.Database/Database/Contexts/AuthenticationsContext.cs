@@ -13,7 +13,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
 
         public DbSet<UserEntity> Users { get; set; }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (_builder != null)
@@ -28,6 +27,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
             modelBuilder.Entity<UserEntity>(model =>
             {
                 model.HasKey(x => x.Id);
+                model.HasIndex(u => u.UserName)
+                .IsUnique();
             });
 
         }
