@@ -13,7 +13,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Interfaces
 {
     public interface IJWTManager
     {
-        Task<string> Register(UserAddRequestContract input);
-        Task<string> Authenticate(UserAuthInputContract cred); 
+        Task<string> Register(AddUserRequestContract input);
+        Task<string> Login(UserCredentialContract cred); 
     }
 }

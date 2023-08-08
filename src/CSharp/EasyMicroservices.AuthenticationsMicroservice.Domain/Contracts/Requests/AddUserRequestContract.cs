@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests
 {
-    public class UserAddRequestContract : UserContract
+    public class AddUserRequestContract : UserContract
     {
         [BindNever]
         [JsonIgnore]

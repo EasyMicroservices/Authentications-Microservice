@@ -20,15 +20,15 @@ namespace EasyMicroservices.AuthenticationsMicroservice
     public class JWTManager : IJWTManager
     {
         private readonly IConfiguration _config;
-        private readonly IContractLogic<UserEntity, UserAddRequestContract, UserUpdateRequest, UserContract, long> _userLogic;
+        private readonly IContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long> _userLogic;
 
-        public JWTManager(IContractLogic<UserEntity, UserAddRequestContract, UserUpdateRequest, UserContract, long> userLogic, IConfiguration config)
+        public JWTManager(IContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long> userLogic, IConfiguration config)
         {
             _config = config;
             _userLogic = userLogic;
         }
 
-        public virtual async Task<string> Authenticate(UserAuthInputContract cred)
+        public virtual async Task<string> Login(UserCredentialContract cred)
         {
              var usersRecords = await _userLogic.GetAll();
              var user = usersRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == cred.Password);
@@ -58,7 +58,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             return tokenString;
        }
 
-        public virtual async Task<string> Register(UserAddRequestContract input)
+        public virtual async Task<string> Register(AddUserRequestContract input)
         {
             string Password = input.Password;
 
@@ -70,7 +70,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
             var user = await _userLogic.Add(input);
 
-            string Token = await Authenticate(new UserAuthInputContract
+            string Token = await Login(new UserCredentialContract
             {
                 UserName = input.UserName,
                 Password = Password
