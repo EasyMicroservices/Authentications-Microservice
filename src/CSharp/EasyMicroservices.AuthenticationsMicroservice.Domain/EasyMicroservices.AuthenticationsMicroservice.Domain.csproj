@@ -7,8 +7,11 @@
 
   <ItemGroup>
     <Folder Include="Contracts\Requests\Filters\" />
-    <Folder Include="Contracts\Responses\" />
     <Folder Include="DataTypes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
   </ItemGroup>
 
 </Project>

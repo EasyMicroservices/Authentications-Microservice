@@ -11,7 +11,6 @@ using EasyMicroservices.Mapper.CompileTimeMapper.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Providers;
 using EasyMicroservices.Mapper.Interfaces;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
-using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using System;
 using System.Linq;
 
@@ -48,7 +47,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
         public virtual IMapperProvider GetMapper()
         {
-            var mapper = new CompileTimeMapperProvider();
+            var mapper = new CompileTimeMapperProvider(new EasyMicroservices.Mapper.SerializerMapper.Providers.SerializerMapperProvider(new EasyMicroservices.Serialization.Newtonsoft.Json.Providers.NewtonsoftJsonProvider()));
             foreach (var type in typeof(IDependencyManager).Assembly.GetTypes())
             {
                 if (typeof(IMapper).IsAssignableFrom(type))

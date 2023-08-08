@@ -1,3 +1,4 @@
+
 using EasyMicroservices.AuthenticationsMicroservice.Database;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -8,9 +9,18 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
-using EasyMicroservices.AuthenticationsMicroservice.Database;
-using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.AuthenticationsMicroservice;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
+using EasyMicroservices.AuthenticationsMicroservice.Contracts;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
 {
@@ -25,35 +35,91 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
             .Build();
 
-            // Add services to the container.
-            //builder.Services.AddAuthorization();
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  policy =>
+                                  {
+                                      policy.AllowAnyOrigin();
+                                  });
+            });
+
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
+                options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    BearerFormat = "JWT",
+                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter your token in the text input below.\r\n Example: \"Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            //Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header
+                        },
+                        new List<string>()
+                    }
+                });
+
                 options.SchemaFilter<GenericFilter>();
                 options.SchemaFilter<XEnumNamesSchemaFilter>();
             });
 
-            builder.Services.AddDbContext<AuthenticationsContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
-            );
+
+            //builder.Services.AddDbContext<AuthenticationsContext>(options =>
+            //    options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
+            //);
 
             //builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
             string webRootPath = @Directory.GetCurrentDirectory();
 
-            builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
-   
-            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
-            builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
-            builder.Services.AddTransient(serviceProvider => new AuthenticationsContext(serviceProvider.GetService<IDatabaseBuilder>()));
-            //builder.Services.AddScoped<IFileManagerProvider>(serviceProvider => new FileManagerProvider());
-            //builder.Services.AddScoped<IDirectoryManagerProvider, kc>();
+            var _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
 
-            //builder.Services.AddScoped<IDirectoryManagerProvider>(serviceProvider => new FileManager());
-            //builder.Services.AddScoped<IFileManagerProvider>();
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
+            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
+            builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
+            builder.Services.AddScoped<IJWTManager, JWTManager>();
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<UserEntity, UserAddRequestContract, UserUpdateRequest, UserContract>());
+            builder.Services.AddTransient(serviceProvider => new AuthenticationsContext(serviceProvider.GetService<IDatabaseBuilder>()));
+            builder.Services.AddTransient<IConfiguration>(serviceProvider => _config);
+
+
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = builder.Configuration["JWT:Issuer"],
+                        ValidAudience = builder.Configuration["JWT:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    };
+                });
+
+
+
 
             var app = builder.Build();
             app.UseDeveloperExceptionPage();
@@ -62,17 +128,18 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
+            app.UseCors(MyAllowSpecificOrigins);
 
-
-            CreateDatabase();
+            //CreateDatabase();
 
             using (var scope = app.Services.CreateScope())
             {
                 using var context = scope.ServiceProvider.GetService<AuthenticationsContext>();
                 await context.Database.EnsureCreatedAsync();
-                await context.Database.MigrateAsync();
+                //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
                 await service.Initialize("Authentication", config.GetValue<string>("RootAddresses:whitelabel"), typeof(AuthenticationsContext));
@@ -82,7 +149,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             await startUp.Run(new DependencyManager());
             app.Run();
         }
-        
+
         static void CreateDatabase()
         {
             using (var context = new AuthenticationsContext(new DatabaseBuilder()))
@@ -157,3 +224,6 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
         }
     }
 }
+
+
+
