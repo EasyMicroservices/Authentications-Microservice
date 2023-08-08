@@ -13,6 +13,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 
 namespace EasyMicroservices.AuthenticationsMicroservice
 {
@@ -29,8 +30,10 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
         public virtual async Task<string> Login(UserSummaryContract cred)
         {
-             var usersRecords = await _userLogic.GetAll();
-             var user = usersRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == cred.Password);
+            string Password = await AuthenticationHelper.HashPassword(cred.Password);
+
+            var usersRecords = await _userLogic.GetAll();
+             var user = usersRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == Password);
              UserContract userData = new();
 
             if (!user.Any())
@@ -60,6 +63,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
         public virtual async Task<string> Register(AddUserRequestContract input)
         {
             string Password = input.Password;
+            input.Password = await AuthenticationHelper.HashPassword(input.Password);
 
             var usersRecords = await _userLogic.GetAll();
             var IfUserNameAlreadyExist = usersRecords.Result.Any(x => x.UserName == input.UserName.ToLower());
@@ -80,6 +84,5 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             else
                 return Token;
         }
-
     }
 }
