@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EasyMicroservices.Cores.Interfaces;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Common
 {
-    public class UserContract
+    public class UserContract : IUniqueIdentitySchema
     {
         public long Id { get; set; }
         public string UserName { get; set; }

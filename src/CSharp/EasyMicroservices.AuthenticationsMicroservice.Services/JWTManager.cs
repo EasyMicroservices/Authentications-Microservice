@@ -19,15 +19,15 @@ namespace EasyMicroservices.AuthenticationsMicroservice
     public class JWTManager : IJWTManager
     {
         private readonly IConfiguration _config;
-        private readonly IContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long> _userLogic;
+        private readonly IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> _userLogic;
 
-        public JWTManager(IContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long> userLogic, IConfiguration config)
+        public JWTManager(IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> userLogic, IConfiguration config)
         {
             _config = config;
             _userLogic = userLogic;
         }
 
-        public virtual async Task<string> Login(UserCredentialContract cred)
+        public virtual async Task<string> Login(UserSummaryContract cred)
         {
              var usersRecords = await _userLogic.GetAll();
              var user = usersRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == cred.Password);
@@ -69,7 +69,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
             var user = await _userLogic.Add(input);
 
-            string Token = await Login(new UserCredentialContract
+            string Token = await Login(new UserSummaryContract
             {
                 UserName = input.UserName,
                 Password = Password

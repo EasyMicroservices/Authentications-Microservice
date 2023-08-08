@@ -99,7 +99,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddScoped<IJWTManager, JWTManager>();
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>());
             builder.Services.AddTransient(serviceProvider => new AuthenticationsContext(serviceProvider.GetService<IDatabaseBuilder>()));
             builder.Services.AddTransient<IConfiguration>(serviceProvider => _config);
 

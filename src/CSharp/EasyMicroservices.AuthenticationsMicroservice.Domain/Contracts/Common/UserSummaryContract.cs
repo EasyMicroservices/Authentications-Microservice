@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Common
 {
-    public class UserCredentialContract
+    public class UserSummaryContract
     {
         public string UserName { get; set; }
         public string Password { get; set; }

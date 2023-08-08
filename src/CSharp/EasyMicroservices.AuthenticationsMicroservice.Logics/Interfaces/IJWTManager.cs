@@ -14,6 +14,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Interfaces
     public interface IJWTManager
     {
         Task<string> Register(AddUserRequestContract input);
-        Task<string> Login(UserCredentialContract cred); 
+        Task<string> Login(UserSummaryContract cred); 
     }
 }

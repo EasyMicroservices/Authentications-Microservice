@@ -20,12 +20,12 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class UsersController : SimpleQueryServiceController<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long>
+    public class UsersController : SimpleQueryServiceController<UserEntity, AddUserRequestContract, UserContract, UserContract, long>
     {
-        private readonly IContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long> _contractLogic;
+        private readonly IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> _contractLogic;
         private readonly IJWTManager _jwtManager;
 
-        public UsersController(IContractLogic<UserEntity, AddUserRequestContract, UpdateUserRequestContract, UserContract, long> contractLogic, IJWTManager jwtManager) : base(contractLogic)
+        public UsersController(IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> contractLogic, IJWTManager jwtManager) : base(contractLogic)
         {
             _contractLogic = contractLogic;
             _jwtManager = jwtManager;
@@ -47,7 +47,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 
         [HttpPost]
 
-        public async Task<MessageContract<UserResponseContract>> Login(UserCredentialContract input)
+        public async Task<MessageContract<UserResponseContract>> Login(UserSummaryContract input)
         {
             string token = await _jwtManager.Login(input);
 
