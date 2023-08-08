@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests
 {
-    public class AddUserRequestContract : UserContract
+    public class AddUserRequestContract
     {
         public string UserName { get; set; }
         public string Password { get; set; }

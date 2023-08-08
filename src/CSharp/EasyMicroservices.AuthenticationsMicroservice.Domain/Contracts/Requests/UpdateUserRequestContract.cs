@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests
 {
-    public class UpdateUserRequestContract : UserContract
+    public class UpdateUserRequestContract
     {
         public long Id { get; set; }
         public string UserName { get; set; }
