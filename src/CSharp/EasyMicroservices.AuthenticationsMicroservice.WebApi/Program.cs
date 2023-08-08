@@ -20,7 +20,7 @@ using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
-using EasyMicroservices.AuthenticationsMicroservice.Contracts;
+using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
 {

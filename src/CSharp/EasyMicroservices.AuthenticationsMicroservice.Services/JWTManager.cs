@@ -1,5 +1,4 @@
-﻿using EasyMicroservices.AuthenticationsMicroservice.Contracts;
-using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
+﻿using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
 using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;

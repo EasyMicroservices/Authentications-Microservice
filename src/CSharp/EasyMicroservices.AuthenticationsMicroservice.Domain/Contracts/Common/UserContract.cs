@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EasyMicroservices.AuthenticationsMicroservice.Contracts
+namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Common
 {
-    public class UserContract 
+    public class UserContract
     {
         public long Id { get; set; }
         public string UserName { get; set; }

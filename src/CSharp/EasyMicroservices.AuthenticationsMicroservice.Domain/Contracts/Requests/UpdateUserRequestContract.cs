@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests
 {
     public class UpdateUserRequestContract : UserContract
     {
-        [BindNever]
-        [JsonIgnore]
-        public long UniqueIdentity { get; set; }
+        public long Id { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }
