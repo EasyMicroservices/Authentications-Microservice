@@ -48,12 +48,12 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
             return response;
         }
 
-        [HttpGet]
-        [Authorize]
-        public string Test()
-        {
-            return "test";
-        }
+        //[HttpGet]
+        //[Authorize]
+        //public string Test()
+        //{
+        //    return "test";
+        //}
 
     }
 }
