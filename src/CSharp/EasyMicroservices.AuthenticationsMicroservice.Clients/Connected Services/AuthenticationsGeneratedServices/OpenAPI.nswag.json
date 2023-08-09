@@ -126,11 +126,11 @@
               "text/json": {
                 "schema": {
                   "type": "string"
-                }
               }
             }
           }
         }
+      }
       }
     },
     "/api/Users/GetById": {
@@ -680,6 +680,20 @@
           },
           "result": {
             "$ref": "#/components/schemas/UserResponseContract"
+          }
+        }
+      },
+      "UserSummaryContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
