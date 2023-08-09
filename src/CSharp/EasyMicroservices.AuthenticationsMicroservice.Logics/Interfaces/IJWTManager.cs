@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using EasyMicroservices.ServiceContracts;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Interfaces
 {
     public interface IJWTManager
     {
-        Task<string> Register(AddUserRequestContract input);
-        Task<string> Login(UserSummaryContract cred); 
+        Task<MessageContract<long>> Register(AddUserRequestContract input);
+        Task<MessageContract<UserResponseContract>> Login(UserClaimContract cred); 
     }
 }

@@ -1,27 +1,19 @@
 
+using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
+using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
 using EasyMicroservices.AuthenticationsMicroservice.Database;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
+using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
-using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
-using EasyMicroservices.AuthenticationsMicroservice;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
-using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
-using EasyMicroservices.AuthenticationsMicroservice.Contracts;
-using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
 {
