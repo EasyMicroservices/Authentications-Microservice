@@ -1,19 +1,19 @@
 ﻿using EasyMicroservices.AuthenticationsMicroservice.Contracts.Common;
 using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
+using EasyMicroservices.AuthenticationsMicroservice.Contracts.Responses;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
+using EasyMicroservices.ServiceContracts;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 
 namespace EasyMicroservices.AuthenticationsMicroservice
 {
@@ -28,16 +28,16 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             _userLogic = userLogic;
         }
 
-        public virtual async Task<string> Login(UserSummaryContract cred)
+        public virtual async Task<MessageContract<UserResponseContract>> Login(UserClaimContract cred)
         {
             string Password = await AuthenticationHelper.HashPassword(cred.Password);
 
             var usersRecords = await _userLogic.GetAll();
-             var user = usersRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == Password);
-             UserContract userData = new();
+            var user = usersRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == Password);
+            UserContract userData = new();
 
             if (!user.Any())
-                return null;
+                return (FailedReasonType.AccessDenied, "Username or password is invalid.");
             else
                 userData = user.FirstOrDefault();
 
@@ -45,10 +45,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             var key = Encoding.UTF8.GetBytes(_config.GetValue<string>("JWT:Key"));
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-                        new Claim(ClaimTypes.Name, userData.Id.ToString()),
-                }),
+                Subject = new ClaimsIdentity(cred.Claims.Select(x => new Claim(x.Name, x.Value)).ToArray()),
                 Expires = DateTime.UtcNow.AddSeconds(_config.GetValue<int>("JWT:TokenExpireTimeInSeconds")),
                 Issuer = _config.GetValue<string>("JWT:Issuer"),
                 Audience = _config.GetValue<string>("JWT:Audience"),
@@ -57,32 +54,26 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var tokenString = tokenHandler.WriteToken(token);
 
-            return tokenString;
-       }
+            return new UserResponseContract
+            {
+                Token = tokenString
+            };
+        }
 
-        public virtual async Task<string> Register(AddUserRequestContract input)
+        public virtual async Task<MessageContract<long>> Register(AddUserRequestContract input)
         {
             string Password = input.Password;
             input.Password = await AuthenticationHelper.HashPassword(input.Password);
 
             var usersRecords = await _userLogic.GetAll();
             var IfUserNameAlreadyExist = usersRecords.Result.Any(x => x.UserName == input.UserName.ToLower());
-            
+
             if (IfUserNameAlreadyExist)
-                return null;
+                return (FailedReasonType.Dupplicate, "User already exists!");
 
             var user = await _userLogic.Add(input);
 
-            string Token = await Login(new UserSummaryContract
-            {
-                UserName = input.UserName,
-                Password = Password
-            });
-
-            if (Token.IsNullOrEmpty())
-                return null;
-            else
-                return Token;
+            return user;
         }
     }
 }

@@ -32,32 +32,27 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<MessageContract<UserResponseContract>> Register(AddUserRequestContract input)
+        public async Task<MessageContract<long>> Register(AddUserRequestContract request)
         {
-            string token = await _jwtManager.Register(input);
+            var response = await _jwtManager.Register(request);
 
-            if (token.IsNullOrEmpty())
-                return (FailedReasonType.AccessDenied, "An error has occurred!");
-
-            return new UserResponseContract {
-                Token = token
-            };
-            
+            return response;
         }
 
         [HttpPost]
 
-        public async Task<MessageContract<UserResponseContract>> Login(UserSummaryContract input)
+        public async Task<MessageContract<UserResponseContract>> Login(UserClaimContract request)
         {
-            string token = await _jwtManager.Login(input);
+            var response = await _jwtManager.Login(request);
 
-            if (token.IsNullOrEmpty())
-                return (FailedReasonType.AccessDenied, "An error has occurred!");
+            return response;
+        }
 
-            return new UserResponseContract {
-                Token = token
-            };
-            
+        [HttpGet]
+        [Authorize]
+        public string Test()
+        {
+            return "test";
         }
 
     }
