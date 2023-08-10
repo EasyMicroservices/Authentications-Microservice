@@ -40,20 +40,28 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
-
-        public async Task<MessageContract<UserResponseContract>> Login(UserClaimContract request)
+        public async Task<MessageContract<long>> Login(UserSummaryContract request)
         {
             var response = await _jwtManager.Login(request);
 
             return response;
         }
+        
 
-        //[HttpGet]
-        //[Authorize]
-        //public string Test()
-        //{
-        //    return "test";
-        //}
+        [HttpPost]
+        public async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract request)
+        {
+            var response = await _jwtManager.GenerateToken(request);
+
+            return response;
+        }
+
+        [HttpGet]
+        [Authorize]
+        public string Test()
+        {
+            return "test";
+        }
 
     }
 }

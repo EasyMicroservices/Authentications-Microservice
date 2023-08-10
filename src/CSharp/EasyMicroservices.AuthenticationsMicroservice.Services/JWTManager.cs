@@ -28,13 +28,29 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             _userLogic = userLogic;
         }
 
-        public virtual async Task<MessageContract<UserResponseContract>> Login(UserClaimContract cred)
+        public virtual async Task<MessageContract<long>> Login(UserSummaryContract cred)
         {
             string Password = await AuthenticationHelper.HashPassword(cred.Password);
 
+            var userRecords = await _userLogic.GetAll();
+            var user = userRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == Password);
+            if (!user.Any())
+                return (FailedReasonType.AccessDenied, "Username or password is invalid."); //"Username or password is invalid."
+
+
+            return user.FirstOrDefault().Id;
+        }
+
+        public virtual async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract cred)
+        {
+
+            var response = await Login(cred);
+            if (!response)
+                return response.ToContract<UserResponseContract>();
+
+            string Password = await AuthenticationHelper.HashPassword(cred.Password);
+
             var user = await _userLogic.GetBy(x => x.UserName == cred.UserName && x.Password == Password);
-            if (!user)
-                return user.ToContract<UserResponseContract>();//"Username or password is invalid."
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_config.GetValue<string>("JWT:Key"));
@@ -55,6 +71,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
                 UniqueIdentity = user.Result.UniqueIdentity
             };
         }
+
 
         public virtual async Task<MessageContract<long>> Register(AddUserRequestContract input)
         {
