@@ -1,9 +1,10 @@
 ﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
 {
-    public class AuthenticationsContext : DbContext
+    public class AuthenticationsContext : RelationalCoreContext
     {
         IDatabaseBuilder _builder;
         public AuthenticationsContext(IDatabaseBuilder builder)

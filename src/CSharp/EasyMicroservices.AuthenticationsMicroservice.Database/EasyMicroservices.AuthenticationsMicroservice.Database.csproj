@@ -11,9 +11,7 @@
   
   <ItemGroup>
 	  <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.2" />
-	  <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.14" />
-	  <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.6" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.9" />
+	  <PackageReference Include="EasyMicroservices.Cores.Relational.EntityFrameworkCore" Version="0.0.0.3" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
   </ItemGroup>
   
