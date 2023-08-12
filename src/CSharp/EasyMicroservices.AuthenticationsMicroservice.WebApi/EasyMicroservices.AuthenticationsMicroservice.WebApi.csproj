@@ -7,7 +7,6 @@
 
   <ItemGroup>
 	<PackageReference Include="EasyMicroservices.Cores.AspCoreApi" Version="0.0.0.13" />
-    <PackageReference Include="EasyMicroservices.ServiceContracts" Version="0.0.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.10">
