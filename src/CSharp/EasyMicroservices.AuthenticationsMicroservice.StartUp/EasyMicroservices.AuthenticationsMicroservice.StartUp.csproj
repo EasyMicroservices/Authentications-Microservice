@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.14" />
+    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.15" />
     <PackageReference Include="EasyMicroservices.WhiteLabelsMicroservice.Clients" Version="0.0.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
