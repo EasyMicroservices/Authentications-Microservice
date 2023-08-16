@@ -2,10 +2,12 @@
 using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
 using EasyMicroservices.AuthenticationsMicroservice.Contracts.Responses;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -42,6 +44,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         [HttpPost]
         public async Task<MessageContract<long>> Login(UserSummaryContract request)
         {
+            string password = await AuthenticationHelper.HashPassword(request.Password);
+            request.Password = password;
+
             var response = await _jwtManager.Login(request);
 
             return response;
@@ -51,9 +56,43 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         [HttpPost]
         public async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract request)
         {
+            string password = await AuthenticationHelper.HashPassword(request.Password);
+            request.Password = password;
+
             var response = await _jwtManager.GenerateToken(request);
 
             return response;
+        }
+
+        [HttpPost]
+        public async Task<MessageContract<UserResponseContract>> RegenerateToken(RegenerateTokenContract request)
+        {
+            var user = await _contractLogic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long>
+            {
+                Id = request.UserId
+            });
+
+            if (user)
+            {
+
+                string password = user.Result.Password;
+
+                var req = new UserClaimContract
+                {
+                    Password = password,
+                    UserName = user.Result.UserName,
+                    Claims = request.Claims
+                };
+
+                var response = await _jwtManager.GenerateToken(req);
+
+                return new UserResponseContract
+                {
+                    Token = response.Result.Token
+                };
+            }
+
+            return user.ToContract<UserResponseContract>();
         }
 
         [HttpGet]

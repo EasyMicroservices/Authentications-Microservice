@@ -30,10 +30,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
         public virtual async Task<MessageContract<long>> Login(UserSummaryContract cred)
         {
-            string Password = await AuthenticationHelper.HashPassword(cred.Password);
-
             var userRecords = await _userLogic.GetAll();
-            var user = userRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == Password);
+            var user = userRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == cred.Password);
             if (!user.Any())
                 return (FailedReasonType.AccessDenied, "Username or password is invalid."); //"Username or password is invalid."
 
@@ -48,9 +46,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             if (!response)
                 return response.ToContract<UserResponseContract>();
 
-            string Password = await AuthenticationHelper.HashPassword(cred.Password);
-
-            var user = await _userLogic.GetBy(x => x.UserName == cred.UserName && x.Password == Password);
+            var user = await _userLogic.GetBy(x => x.UserName == cred.UserName && x.Password == cred.Password);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_config.GetValue<string>("JWT:Key"));
