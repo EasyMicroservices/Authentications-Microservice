@@ -152,6 +152,55 @@
         }
       }
     },
+    "/api/Users/RegenerateToken": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "RegenerateToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateTokenContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateTokenContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegenerateTokenContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/Test": {
       "get": {
         "tags": [
@@ -733,6 +782,24 @@
           },
           "error": {
             "$ref": "#/components/schemas/ErrorContract"
+          }
+        }
+      },
+      "RegenerateTokenContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "claims": {
+            "title": "List<ClaimContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ClaimContract"
+            }
           }
         }
       },
