@@ -4,6 +4,7 @@ using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
 {
     [DbContext(typeof(AuthenticationsContext))]
-    partial class AuthenticationsContextModelSnapshot : ModelSnapshot
+    [Migration("20230831142301_SyncDatabaseForProduction")]
+    partial class SyncDatabaseForProduction
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,10 +41,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-                        
-                    b.Property<bool>("IsUsernameVerified")
-                        .HasColumnType("bit");
-                        
+
                     b.Property<DateTime?>("ModificationDateTime")
                         .HasColumnType("datetime2");
 

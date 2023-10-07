@@ -11,9 +11,11 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 {
     public class DatabaseBuilder : IDatabaseBuilder
     {
-        readonly IConfiguration config = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-        .Build();
+        IConfiguration _configuration;
+        public DatabaseBuilder(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
