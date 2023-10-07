@@ -32,7 +32,30 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
             _contractLogic = contractLogic;
             _jwtManager = jwtManager;
         }
-
+        [HttpPost]
+        public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
+        {
+            var user = await _contractLogic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId });
+            if (user.IsSuccess)
+            {
+                var updateUser = await _contractLogic.Update(new UserContract
+                {
+                    CreationDateTime = user.Result.CreationDateTime,
+                    DeletedDateTime = user.Result.DeletedDateTime,
+                    Id = user.Result.Id,
+                    IsDeleted = user.Result.IsDeleted,
+                    IsUsernameVerified = true,
+                    ModificationDateTime = user.Result.ModificationDateTime,
+                    Password = user.Result.Password,
+                    UniqueIdentity = user.Result.UniqueIdentity,
+                    UserName = user.Result.UserName,
+                });
+                if (!updateUser.IsSuccess)
+                    return (FailedReasonType.Incorrect, "An error has occurred");
+                return true;
+            }
+            return (FailedReasonType.Incorrect, "UserId is incorrect");
+        }
         [HttpPost]
         public async Task<MessageContract<long>> Register(AddUserRequestContract request)
         {
@@ -51,7 +74,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 
             return response;
         }
-        
+
 
         [HttpPost]
         public async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract request)

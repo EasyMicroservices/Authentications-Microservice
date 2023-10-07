@@ -5,6 +5,55 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Users/VerifyUserName": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "operationId": "VerifyUserName",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyEmailAddressContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyEmailAddressContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyEmailAddressContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BooleanMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Users/Register": {
       "post": {
         "tags": [
@@ -621,6 +670,22 @@
           }
         }
       },
+      "BooleanMessageContract": {
+        "title": "MessageContract<Boolean>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "type": "boolean"
+          }
+        }
+      },
       "ClaimContract": {
         "type": "object",
         "additionalProperties": false,
@@ -863,6 +928,9 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "isUsernameVerified": {
+            "type": "boolean"
           }
         }
       },
@@ -954,6 +1022,16 @@
           "message": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "VerifyEmailAddressContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       }

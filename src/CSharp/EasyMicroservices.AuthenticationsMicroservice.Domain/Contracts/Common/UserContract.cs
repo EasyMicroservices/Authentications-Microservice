@@ -17,5 +17,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Common
         public DateTime? ModificationDateTime { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedDateTime { get; set; }
+        public bool IsUsernameVerified { get; set; }
     }
 }
