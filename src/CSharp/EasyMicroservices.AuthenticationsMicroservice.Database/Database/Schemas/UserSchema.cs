@@ -19,5 +19,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Schemas
         public DateTime? ModificationDateTime { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedDateTime { get; set; }
+        public bool IsUsernameVerified { get; set; }
     }
 }
