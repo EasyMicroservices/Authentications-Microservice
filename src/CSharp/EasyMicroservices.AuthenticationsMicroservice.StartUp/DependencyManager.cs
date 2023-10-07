@@ -13,6 +13,7 @@ using EasyMicroservices.Mapper.Interfaces;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
 using System;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace EasyMicroservices.AuthenticationsMicroservice
 {
@@ -32,7 +33,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
         public virtual IDatabase GetDatabase()
         {
-            return new EntityFrameworkCoreDatabaseProvider(new AuthenticationsContext(new DatabaseBuilder()));
+            var _config = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
+
+            return new EntityFrameworkCoreDatabaseProvider(new AuthenticationsContext(new DatabaseBuilder(_config)));
         }
 
         public static string DefaultUniqueIdentity { get; set; }
