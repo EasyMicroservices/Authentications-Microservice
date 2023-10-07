@@ -77,9 +77,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             });
 
 
-            //builder.Services.AddDbContext<AuthenticationsContext>(options =>
-            //    options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
-            //);
+            builder.Services.AddDbContext<AuthenticationsContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString(config.GetConnectionString("local")))
+            );
 
             //builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
             string webRootPath = @Directory.GetCurrentDirectory();
@@ -131,7 +131,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             using (var scope = app.Services.CreateScope())
             {
                 using var context = scope.ServiceProvider.GetService<AuthenticationsContext>();
-                await context.Database.EnsureCreatedAsync();
+                //await context.Database.EnsureCreatedAsync();
                 //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
