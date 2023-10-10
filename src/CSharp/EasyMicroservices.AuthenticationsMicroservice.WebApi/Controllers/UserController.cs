@@ -36,25 +36,29 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
         {
             var user = await _contractLogic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId });
-            if (user.IsSuccess)
-            {
-                var updateUser = await _contractLogic.Update(new UserContract
-                {
-                    CreationDateTime = user.Result.CreationDateTime,
-                    DeletedDateTime = user.Result.DeletedDateTime,
-                    Id = user.Result.Id,
-                    IsDeleted = user.Result.IsDeleted,
-                    IsUsernameVerified = true,
-                    ModificationDateTime = user.Result.ModificationDateTime,
-                    Password = user.Result.Password,
-                    UniqueIdentity = user.Result.UniqueIdentity,
-                    UserName = user.Result.UserName,
-                });
-                if (!updateUser.IsSuccess)
-                    return (FailedReasonType.Incorrect, "An error has occurred");
+            if (!user.IsSuccess)
+                return (FailedReasonType.Incorrect, "UserId is incorrect");
+            if (user.Result.IsUsernameVerified)
                 return true;
-            }
-            return (FailedReasonType.Incorrect, "UserId is incorrect");
+
+            var updateUser = await _contractLogic.Update(new UserContract
+            {
+                CreationDateTime = user.Result.CreationDateTime,
+                DeletedDateTime = user.Result.DeletedDateTime,
+                Id = user.Result.Id,
+                IsDeleted = user.Result.IsDeleted,
+                IsUsernameVerified = true,
+                ModificationDateTime = user.Result.ModificationDateTime,
+                Password = user.Result.Password,
+                UniqueIdentity = user.Result.UniqueIdentity,
+                UserName = user.Result.UserName,
+            });
+
+            if (!updateUser.IsSuccess)
+                return (FailedReasonType.Incorrect, "An error has occurred");
+
+            return true;
+            
         }
         [HttpPost]
         public async Task<MessageContract<long>> Register(AddUserRequestContract request)
