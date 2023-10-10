@@ -77,7 +77,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             var usersRecords = await _userLogic.GetBy(x => x.UserName == input.UserName.ToLower());
 
             if (usersRecords.IsSuccess)
-                return (FailedReasonType.Dupplicate, "User already exists!");
+                return (FailedReasonType.Duplicate, "User already exists!");
 
             var user = await _userLogic.Add(input);
 
