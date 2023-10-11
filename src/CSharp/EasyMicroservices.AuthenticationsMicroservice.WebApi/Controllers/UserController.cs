@@ -5,43 +5,35 @@ using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.AspCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Runtime.CompilerServices;
-using System.Security.Claims;
-using System.Text;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
-    [ApiController]
     public class UsersController : SimpleQueryServiceController<UserEntity, AddUserRequestContract, UserContract, UserContract, long>
     {
-        private readonly IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> _contractLogic;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IJWTManager _jwtManager;
 
-        public UsersController(IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> contractLogic, IJWTManager jwtManager) : base(contractLogic)
+        public UsersController(IUnitOfWork unitOfWork, IJWTManager jwtManager) : base(unitOfWork)
         {
-            _contractLogic = contractLogic;
+            _unitOfWork = unitOfWork;
             _jwtManager = jwtManager;
         }
         [HttpPost]
         public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
         {
-            var user = await _contractLogic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId });
+            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+            var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId });
             if (!user.IsSuccess)
                 return (FailedReasonType.Incorrect, "UserId is incorrect");
             if (user.Result.IsUsernameVerified)
                 return true;
 
-            var updateUser = await _contractLogic.Update(new UserContract
+            var updateUser = await logic.Update(new UserContract
             {
                 CreationDateTime = user.Result.CreationDateTime,
                 DeletedDateTime = user.Result.DeletedDateTime,
@@ -58,7 +50,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
                 return (FailedReasonType.Incorrect, "An error has occurred");
 
             return true;
-            
+
         }
         [HttpPost]
         public async Task<MessageContract<long>> Register(AddUserRequestContract request)
@@ -94,7 +86,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         [HttpPost]
         public async Task<MessageContract<UserResponseContract>> RegenerateToken(RegenerateTokenContract request)
         {
-            var user = await _contractLogic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long>
+            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+            var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long>
             {
                 Id = request.UserId
             });
