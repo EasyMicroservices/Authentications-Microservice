@@ -74,11 +74,10 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             string Password = input.Password;
             input.Password = await AuthenticationHelper.HashPassword(input.Password);
 
-            var usersRecords = await _userLogic.GetAll();
-            var IfUserNameAlreadyExist = usersRecords.Result.Any(x => x.UserName == input.UserName.ToLower());
+            var usersRecords = await _userLogic.GetBy(x => x.UserName == input.UserName.ToLower());
 
-            if (IfUserNameAlreadyExist)
-                return (FailedReasonType.Dupplicate, "User already exists!");
+            if (usersRecords.IsSuccess)
+                return (FailedReasonType.Duplicate, "User already exists!");
 
             var user = await _userLogic.Add(input);
 
