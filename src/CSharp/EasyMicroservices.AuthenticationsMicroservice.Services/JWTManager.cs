@@ -4,6 +4,7 @@ using EasyMicroservices.AuthenticationsMicroservice.Contracts.Responses;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
 using Microsoft.Extensions.Configuration;
@@ -20,17 +21,18 @@ namespace EasyMicroservices.AuthenticationsMicroservice
     public class JWTManager : IJWTManager
     {
         private readonly IConfiguration _config;
-        private readonly IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> _userLogic;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public JWTManager(IContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long> userLogic, IConfiguration config)
+        public JWTManager(IUnitOfWork unitOfWork, IConfiguration config)
         {
             _config = config;
-            _userLogic = userLogic;
+            _unitOfWork = unitOfWork;
         }
 
         public virtual async Task<MessageContract<long>> Login(UserSummaryContract cred)
         {
-            var userRecords = await _userLogic.GetAll();
+            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+            var userRecords = await logic.GetAll();
             var user = userRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == cred.Password);
             if (!user.Any())
                 return (FailedReasonType.AccessDenied, "Username or password is invalid."); //"Username or password is invalid."
@@ -41,12 +43,12 @@ namespace EasyMicroservices.AuthenticationsMicroservice
 
         public virtual async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract cred)
         {
-
             var response = await Login(cred);
             if (!response)
                 return response.ToContract<UserResponseContract>();
 
-            var user = await _userLogic.GetBy(x => x.UserName == cred.UserName && x.Password == cred.Password);
+            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+            var user = await logic.GetBy(x => x.UserName == cred.UserName && x.Password == cred.Password);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_config.GetValue<string>("JWT:Key"));
@@ -74,12 +76,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice
             string Password = input.Password;
             input.Password = await AuthenticationHelper.HashPassword(input.Password);
 
-            var usersRecords = await _userLogic.GetBy(x => x.UserName == input.UserName.ToLower());
+            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+            var usersRecords = await logic.GetBy(x => x.UserName == input.UserName.ToLower());
 
             if (usersRecords.IsSuccess)
                 return (FailedReasonType.Duplicate, "User already exists!");
 
-            var user = await _userLogic.Add(input);
+            var user = await logic.Add(input);
 
             return user;
         }
