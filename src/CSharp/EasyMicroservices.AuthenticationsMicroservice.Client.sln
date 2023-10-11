@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test-Layer", "Test-Layer", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.AuthenticationsMicroservice.Clients", "EasyMicroservices.AuthenticationsMicroservice.Clients\EasyMicroservices.AuthenticationsMicroservice.Clients.csproj", "{EBDC4665-F64A-4F50-B939-3ACCAFB72A3D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.AuthenticationsMicroservice.Clients.Tests", "EasyMicroservices.AuthenticationsMicroservice.Tests\EasyMicroservices.AuthenticationsMicroservice.Clients.Tests.csproj", "{3969FAB0-9A48-4516-97DD-C1882DDF1E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.AuthenticationsMicroservice.Clients.Tests", "EasyMicroservices.AuthenticationsMicroservice.Clients.Tests\EasyMicroservices.AuthenticationsMicroservice.Clients.Tests.csproj", "{447548E2-A5EF-4C33-A486-E2F9D05999EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,25 +33,25 @@ Global
 		{EBDC4665-F64A-4F50-B939-3ACCAFB72A3D}.Release|x64.Build.0 = Release|x64
 		{EBDC4665-F64A-4F50-B939-3ACCAFB72A3D}.Release|x86.ActiveCfg = Release|x86
 		{EBDC4665-F64A-4F50-B939-3ACCAFB72A3D}.Release|x86.Build.0 = Release|x86
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Debug|x64.Build.0 = Debug|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Debug|x86.Build.0 = Debug|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Release|x64.ActiveCfg = Release|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Release|x64.Build.0 = Release|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Release|x86.ActiveCfg = Release|Any CPU
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96}.Release|x86.Build.0 = Release|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Debug|x64.Build.0 = Debug|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Debug|x86.Build.0 = Debug|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x64.ActiveCfg = Release|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x64.Build.0 = Release|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x86.ActiveCfg = Release|Any CPU
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EBDC4665-F64A-4F50-B939-3ACCAFB72A3D} = {D2CA37CF-478B-4F54-B119-69AE1B8C525B}
-		{3969FAB0-9A48-4516-97DD-C1882DDF1E96} = {E9B271A6-185D-4C47-A7BA-61832F628E25}
+		{447548E2-A5EF-4C33-A486-E2F9D05999EC} = {E9B271A6-185D-4C47-A7BA-61832F628E25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8B82934-7EE0-4C86-9065-ADF9092553E1}

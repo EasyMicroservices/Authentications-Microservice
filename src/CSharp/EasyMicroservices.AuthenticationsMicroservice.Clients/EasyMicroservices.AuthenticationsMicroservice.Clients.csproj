@@ -5,7 +5,7 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>0.0.0.8</Version>
+    <Version>0.0.0.9</Version>
     <Description>client generated code.</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>microservice,auth,authentication,client</PackageTags>
