@@ -32,13 +32,12 @@ namespace EasyMicroservices.AuthenticationsMicroservice
         public virtual async Task<MessageContract<long>> Login(UserSummaryContract cred)
         {
             var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
-            var userRecords = await logic.GetAll();
-            var user = userRecords.Result.Where(x => x.UserName == cred.UserName && x.Password == cred.Password);
-            if (!user.Any())
+            var user = await logic.GetBy(x => x.UserName == cred.UserName && x.Password == cred.Password);
+            if (!user.IsSuccess)
                 return (FailedReasonType.AccessDenied, "Username or password is invalid."); //"Username or password is invalid."
 
 
-            return user.FirstOrDefault().Id;
+            return user.Result.Id;
         }
 
         public virtual async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract cred)
