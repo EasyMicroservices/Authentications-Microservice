@@ -1241,6 +1241,55 @@
         }
       }
     },
+    "/api/ServicePermission/GetAllPermissionsBy": {
+      "post": {
+        "tags": [
+          "ServicePermission"
+        ],
+        "operationId": "GetAllPermissionsBy",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePermissionRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePermissionRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ServicePermissionRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePermissionContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePermissionContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ServicePermissionContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/ServicePermission/Add": {
       "post": {
         "tags": [
@@ -4161,6 +4210,20 @@
             "items": {
               "$ref": "#/components/schemas/ServicePermissionContract"
             }
+          }
+        }
+      },
+      "ServicePermissionRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "roleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "microserviceName": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
