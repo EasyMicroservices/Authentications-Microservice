@@ -13,9 +13,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version:  |
-            3.1.x
-            5.0.x
-            6.0.x
             7.0.x
       - name: Install Android
         run: dotnet workload install android
@@ -28,9 +25,7 @@ jobs:
           workspace: "./src/CSharp/EasyMicroservices.AuthenticationsMicroservice.sln"
       - name: Test
         run:  |
-          dotnet test ./src/CSharp/EasyMicroservices.AuthenticationsMicroservice.sln -f netcoreapp3.1
-          dotnet test ./src/CSharp/EasyMicroservices.AuthenticationsMicroservice.sln -f net6.0
-          dotnet test ./src/CSharp/EasyMicroservices.AuthenticationsMicroservice.sln -f net5.0
+          dotnet test ./src/CSharp/EasyMicroservices.AuthenticationsMicroservice.sln -f net7.0
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
         uses: EndBug/add-and-commit@v4.1.0
