@@ -32,7 +32,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 
             var servicePermissions = await UnitOfWork.GetReadableOf<RoleServicePermissionEntity>()
                 .Include(x => x.ServicePermission)
-                .Where(x => roles.Contains(x.RoleId) && x.ServicePermission.MicroserviceName == request.MicroserviceName)
+                .Where(x => roles.Contains(x.RoleId) && (x.ServicePermission.MicroserviceName == null || x.ServicePermission.MicroserviceName == request.MicroserviceName))
                 .Select(x => x.ServicePermission)
                 .ToListAsync (cancellationToken);
 
