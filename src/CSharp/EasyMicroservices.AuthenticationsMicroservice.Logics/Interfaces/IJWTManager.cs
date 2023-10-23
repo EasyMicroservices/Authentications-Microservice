@@ -15,8 +15,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Interfaces
     public interface IJWTManager
     {
         Task<MessageContract<long>> Register(AddUserRequestContract input);
-        Task<MessageContract<long>> Login(UserSummaryContract cred); 
-        Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract cred); 
+        Task<MessageContract<long>> Login(UserSummaryContract cred);
+        Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract cred);
 
     }
 }

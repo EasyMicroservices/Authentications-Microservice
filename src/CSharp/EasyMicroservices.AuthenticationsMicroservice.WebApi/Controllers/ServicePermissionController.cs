@@ -34,7 +34,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
                 .Include(x => x.ServicePermission)
                 .Where(x => roles.Contains(x.RoleId) && (x.ServicePermission.MicroserviceName == null || x.ServicePermission.MicroserviceName == request.MicroserviceName))
                 .Select(x => x.ServicePermission)
-                .ToListAsync (cancellationToken);
+                .ToListAsync(cancellationToken);
 
             return UnitOfWork.GetMapper().MapToList<ServicePermissionContract>(servicePermissions.Distinct());
         }
