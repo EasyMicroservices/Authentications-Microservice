@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.Authentic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMicroservices.AuthenticationsMicroservice.Clients.Tests", "EasyMicroservices.AuthenticationsMicroservice.Clients.Tests\EasyMicroservices.AuthenticationsMicroservice.Clients.Tests.csproj", "{447548E2-A5EF-4C33-A486-E2F9D05999EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests", "EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests\EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.csproj", "{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,18 @@ Global
 		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x64.Build.0 = Release|Any CPU
 		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x86.ActiveCfg = Release|Any CPU
 		{447548E2-A5EF-4C33-A486-E2F9D05999EC}.Release|x86.Build.0 = Release|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Debug|x64.Build.0 = Debug|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Debug|x86.Build.0 = Debug|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Release|x64.ActiveCfg = Release|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Release|x64.Build.0 = Release|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Release|x86.ActiveCfg = Release|Any CPU
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EBDC4665-F64A-4F50-B939-3ACCAFB72A3D} = {D2CA37CF-478B-4F54-B119-69AE1B8C525B}
 		{447548E2-A5EF-4C33-A486-E2F9D05999EC} = {E9B271A6-185D-4C47-A7BA-61832F628E25}
+		{7CAC93CE-955D-4E5F-AAFC-B8F79CE3CF63} = {E9B271A6-185D-4C47-A7BA-61832F628E25}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8B82934-7EE0-4C86-9065-ADF9092553E1}

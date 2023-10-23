@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Choose>
+    <When Condition="$(SolutionFileName.Contains('Net7'))">
+      <PropertyGroup>
+        <TargetFrameworks>net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <PropertyGroup>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>EasyMicroservices</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.0.0.1</Version>
+    <Description>authentication virtual server for tests</Description>
+    <Copyright>EasyMicroservices@gmail.com</Copyright>
+    <PackageTags>authentication,tests,testtemplate,testtemplates,examples,server,testserver,virtual,virtualserver</PackageTags>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/Authentications-Microservice</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Laboratory" Version="0.0.0.12" />
+  </ItemGroup>
+  
+</Project>

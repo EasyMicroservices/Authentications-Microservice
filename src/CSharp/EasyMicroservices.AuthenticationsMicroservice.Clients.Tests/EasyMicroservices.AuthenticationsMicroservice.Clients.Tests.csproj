@@ -9,8 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Laboratory" Version="0.0.0.7" />
-    <PackageReference Include="EasyMicroservices.Tests" Version="0.0.0.3" />
+    <PackageReference Include="EasyMicroservices.Laboratory" Version="0.0.0.12" />
+    <PackageReference Include="EasyMicroservices.Tests" Version="0.0.0.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -19,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.Clients\EasyMicroservices.AuthenticationsMicroservice.Clients.csproj" />
+    <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests\EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.csproj" />
   </ItemGroup>
 
 </Project>
