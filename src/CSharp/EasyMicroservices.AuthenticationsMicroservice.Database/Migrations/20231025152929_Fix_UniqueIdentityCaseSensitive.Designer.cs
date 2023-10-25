@@ -4,6 +4,7 @@ using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
 {
     [DbContext(typeof(AuthenticationsContext))]
-    partial class AuthenticationsContextModelSnapshot : ModelSnapshot
+    [Migration("20231025152929_Fix_UniqueIdentityCaseSensitive")]
+    partial class Fix_UniqueIdentityCaseSensitive
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
