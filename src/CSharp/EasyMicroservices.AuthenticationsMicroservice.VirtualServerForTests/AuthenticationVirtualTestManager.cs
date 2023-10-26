@@ -1,6 +1,7 @@
 ﻿using EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.TestResources;
 using EasyMicroservices.Laboratory.Constants;
 using EasyMicroservices.Laboratory.Engine;
+using EasyMicroservices.Laboratory.Engine.Net;
 using EasyMicroservices.Laboratory.Engine.Net.Http;
 using System;
 using System.Collections.Generic;
@@ -14,18 +15,18 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests
         static Dictionary<int, ResourceManager> InitializedPorts = new Dictionary<int, ResourceManager>();
         public int CurrentPortNumber { get; set; }
 
-        public async Task<bool> OnInitialize(int portNumber)
+        public async Task<bool> OnInitialize(int portNumber, BaseHandler handler = null)
         {
             CurrentPortNumber = portNumber;
             if (InitializedPorts.ContainsKey(portNumber))
                 return false;
             InitializedPorts[portNumber] = new ResourceManager();
-            HttpHandler httpHandler = new HttpHandler(InitializedPorts[portNumber]);
+            handler ??= BaseHandler.CreateOSHandler(InitializedPorts[portNumber]);
             foreach (var item in AuthenticationResource.GetResources("TestExample"))
             {
                 AppendService(portNumber, item.Key, item.Value);
             }
-            await httpHandler.Start(portNumber);
+            await handler.Start(portNumber);
             return true;
         }
 
