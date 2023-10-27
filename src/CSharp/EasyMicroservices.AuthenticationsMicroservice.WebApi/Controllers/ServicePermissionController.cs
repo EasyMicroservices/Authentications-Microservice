@@ -22,21 +22,33 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
             request.RoleName.ThrowIfNullOrEmpty(nameof(request.RoleName));
 
             var roles = await UnitOfWork.GetReadableOf<RoleEntity>()
+                .Include(x => x.Parents)
                 .Include(x => x.Children)
-                .ThenInclude(x => x.Children)
-                .ThenInclude(x => x.Children)
-                .ThenInclude(x => x.Children)
-                .Where(x => x.Name == request.RoleName)
-                .Select(x => x.Id)
                 .ToArrayAsync(cancellationToken);
-
+            var roleIds = GetIds(roles.Where(x => x.Name.Equals(request.RoleName, StringComparison.OrdinalIgnoreCase)), new List<long>(), new HashSet<RoleEntity>());
             var servicePermissions = await UnitOfWork.GetReadableOf<RoleServicePermissionEntity>()
                 .Include(x => x.ServicePermission)
-                .Where(x => roles.Contains(x.RoleId) && (x.ServicePermission.MicroserviceName == null || x.ServicePermission.MicroserviceName == request.MicroserviceName))
+                .Where(x => roleIds.Contains(x.RoleId) && (x.ServicePermission.MicroserviceName == null || x.ServicePermission.MicroserviceName == request.MicroserviceName))
                 .Select(x => x.ServicePermission)
                 .ToListAsync(cancellationToken);
 
             return UnitOfWork.GetMapper().MapToList<ServicePermissionContract>(servicePermissions.Distinct());
+        }
+
+        long[] GetIds(IEnumerable<RoleEntity> roles, List<long> result, HashSet<RoleEntity> checkedList)
+        {
+            roles = roles.Distinct().Where(x => x != null);
+            if (!roles.Any())
+                return new long[0];
+            var items = roles.ToList();
+            foreach (var item in items)
+            {
+                checkedList.Add(item);
+            }
+            result.AddRange(items.Select(x => x.Id));
+            result.AddRange(GetIds(items.SelectMany(x => x.Children.Select(p => p.Parent))
+                .Where(x => !checkedList.Contains(x)), result, checkedList));
+            return result.Distinct().ToArray();
         }
     }
 }

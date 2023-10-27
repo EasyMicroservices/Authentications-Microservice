@@ -1,6 +1,8 @@
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
+using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -59,6 +61,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             app.Services.AddTransient((serviceProvider) => new UnitOfWork(serviceProvider));
             app.Services.AddTransient(serviceProvider => new AuthenticationsContext(serviceProvider.GetService<IEntityFrameworkCoreDatabaseBuilder>()));
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
+            app.Services.AddTransient<IBaseUnitOfWork, UnitOfWork>();
             StartUpExtensions.AddWhiteLabel("Authentication", "RootAddresses:WhiteLabel");
 
             app.Services.AddCors(options =>

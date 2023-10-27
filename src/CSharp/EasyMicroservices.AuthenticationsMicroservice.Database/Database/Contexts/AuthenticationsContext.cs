@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.AuthenticationsMicroservice.SeedData;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using Microsoft.EntityFrameworkCore;
@@ -16,15 +17,24 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
         public DbSet<UserRoleEntity> UserRoles { get; set; }
         public DbSet<ServicePermissionEntity> ServicePermissions { get; set; }
         public DbSet<RoleServicePermissionEntity> RoleServicePermissions { get; set; }
+        public DbSet<RoleParentChildEntity> RoleParentChildren { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.AutoModelCreating(modelBuilder);
-
             modelBuilder.Entity<UserEntity>(model =>
             {
                 model.HasIndex(u => u.UserName)
                 .IsUnique();
+            });
+
+            modelBuilder.Entity<RoleServicePermissionEntity>(model =>
+            {
+                model.HasKey(u => new { u.RoleId, u.ServicePermissionId });
+            });
+
+            modelBuilder.Entity<UserRoleEntity>(model =>
+            {
+                model.HasKey(u => new { u.RoleId, u.UserId });
             });
 
             modelBuilder.Entity<ServicePermissionEntity>(model =>
@@ -34,6 +44,22 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
                 model.HasIndex(u => u.MethodName);
                 model.HasIndex(u => new { u.MicroserviceName, u.ServiceName, u.MethodName }).IsUnique();
             });
+
+            modelBuilder.Entity<RoleParentChildEntity>(model =>
+            {
+                model.HasKey(u => new { u.ParentId, u.ChildId });
+
+                model.HasOne(u => u.Parent)
+                .WithMany(u => u.Parents)
+                .HasForeignKey(u => u.ParentId);
+
+                model.HasOne(u => u.Child)
+                .WithMany(u => u.Children)
+                .HasForeignKey(u => u.ChildId);
+            });
+
+            var result = base.AutoModelCreating(modelBuilder);
+            AllSeedData.Seed(modelBuilder);
         }
     }
 }
