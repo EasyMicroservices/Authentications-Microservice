@@ -6,7 +6,6 @@ using EasyMicroservices.AuthenticationsMicroservice.Helpers;
 using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
-using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -23,31 +22,27 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
             _unitOfWork = unitOfWork;
             _jwtManager = jwtManager;
         }
+
         [HttpPost]
         public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
         {
             var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
-            var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId });
-            if (!user.IsSuccess)
-                return (FailedReasonType.Incorrect, "UserId is incorrect");
-            if (user.Result.IsUsernameVerified)
+            var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId }).AsCheckedResult();
+            if (user.IsUsernameVerified)
                 return true;
 
-            var updateUser = await logic.Update(new UserContract
+            await logic.Update(new UserContract
             {
-                CreationDateTime = user.Result.CreationDateTime,
-                DeletedDateTime = user.Result.DeletedDateTime,
-                Id = user.Result.Id,
-                IsDeleted = user.Result.IsDeleted,
+                CreationDateTime = user.CreationDateTime,
+                DeletedDateTime = user.DeletedDateTime,
+                Id = user.Id,
+                IsDeleted = user.IsDeleted,
                 IsUsernameVerified = true,
-                ModificationDateTime = user.Result.ModificationDateTime,
-                Password = user.Result.Password,
-                UniqueIdentity = user.Result.UniqueIdentity,
-                UserName = user.Result.UserName,
-            });
-
-            if (!updateUser.IsSuccess)
-                return (FailedReasonType.Incorrect, "An error has occurred");
+                ModificationDateTime = user.ModificationDateTime,
+                Password = user.Password,
+                UniqueIdentity = user.UniqueIdentity,
+                UserName = user.UserName,
+            }).AsCheckedResult();
 
             return true;
 
@@ -55,9 +50,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         [HttpPost]
         public async Task<MessageContract<long>> Register(AddUserRequestContract request)
         {
-            var response = await _jwtManager.Register(request);
-
-            return response;
+            return await _jwtManager.Register(request);
         }
 
         [HttpPost]
@@ -70,7 +63,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 
             return response;
         }
-
 
         [HttpPost]
         public async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract request)
