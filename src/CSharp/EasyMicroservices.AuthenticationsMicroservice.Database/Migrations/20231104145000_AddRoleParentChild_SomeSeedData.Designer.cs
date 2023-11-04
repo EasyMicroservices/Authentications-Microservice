@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
 {
     [DbContext(typeof(AuthenticationsContext))]
-    [Migration("20231027124137_AddRoleParentChild_SomeSeedData")]
+    [Migration("20231104145000_AddRoleParentChild_SomeSeedData")]
     partial class AddRoleParentChild_SomeSeedData
     {
         /// <inheritdoc />
@@ -652,13 +652,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Child")
                         .WithMany("Children")
                         .HasForeignKey("ChildId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Parent")
                         .WithMany("Parents")
                         .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Child");
