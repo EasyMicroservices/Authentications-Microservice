@@ -23,6 +23,18 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
             //_jwtManager = jwtManager;
         }
 
+        [HttpPost]
+        public async Task<MessageContract> UserHasExistsByUsername(UserHasExistsByUsernameRequestContract request)
+        {
+            return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>().GetBy(x => x.UserName == request.Username);
+        }
+               
+        [HttpPost]
+        public async Task<MessageContract> VerifyUserIdentity(UserSummaryContract request)
+        {
+            return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>().GetBy(x => x.UserName == request.UserName && x.Password == request.Password);
+        }
+
         //[HttpPost]
         //public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
         //{
