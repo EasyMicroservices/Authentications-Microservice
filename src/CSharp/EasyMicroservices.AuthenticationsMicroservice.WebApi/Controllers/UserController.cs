@@ -15,104 +15,104 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
     public class UsersController : SimpleQueryServiceController<UserEntity, AddUserRequestContract, UserContract, UserContract, long>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IJWTManager _jwtManager;
+        //private readonly IJWTManager _jwtManager;
 
-        public UsersController(IUnitOfWork unitOfWork, IJWTManager jwtManager) : base(unitOfWork)
+        public UsersController(IUnitOfWork unitOfWork/*, IJWTManager jwtManager*/) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _jwtManager = jwtManager;
+            //_jwtManager = jwtManager;
         }
 
-        [HttpPost]
-        public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
-        {
-            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
-            var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId }).AsCheckedResult();
-            if (user.IsUsernameVerified)
-                return true;
+        //[HttpPost]
+        //public async Task<MessageContract<bool>> VerifyUserName(VerifyEmailAddressContract request)
+        //{
+        //    var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+        //    var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long> { Id = request.UserId }).AsCheckedResult();
+        //    if (user.IsUsernameVerified)
+        //        return true;
 
-            await logic.Update(new UserContract
-            {
-                CreationDateTime = user.CreationDateTime,
-                DeletedDateTime = user.DeletedDateTime,
-                Id = user.Id,
-                IsDeleted = user.IsDeleted,
-                IsUsernameVerified = true,
-                ModificationDateTime = user.ModificationDateTime,
-                Password = user.Password,
-                UniqueIdentity = user.UniqueIdentity,
-                UserName = user.UserName,
-            }).AsCheckedResult();
+        //    await logic.Update(new UserContract
+        //    {
+        //        CreationDateTime = user.CreationDateTime,
+        //        DeletedDateTime = user.DeletedDateTime,
+        //        Id = user.Id,
+        //        IsDeleted = user.IsDeleted,
+        //        IsUsernameVerified = true,
+        //        ModificationDateTime = user.ModificationDateTime,
+        //        Password = user.Password,
+        //        UniqueIdentity = user.UniqueIdentity,
+        //        UserName = user.UserName,
+        //    }).AsCheckedResult();
 
-            return true;
+        //    return true;
 
-        }
-        [HttpPost]
-        public async Task<MessageContract<long>> Register(AddUserRequestContract request)
-        {
-            return await _jwtManager.Register(request);
-        }
+        //}
+        //[HttpPost]
+        //public async Task<MessageContract<long>> Register(AddUserRequestContract request)
+        //{
+        //    return await _jwtManager.Register(request);
+        //}
 
-        [HttpPost]
-        public async Task<MessageContract<long>> Login(UserSummaryContract request)
-        {
-            string password = await AuthenticationHelper.HashPassword(request.Password);
-            request.Password = password;
+        //[HttpPost]
+        //public async Task<MessageContract<long>> Login(UserSummaryContract request)
+        //{
+        //    string password = await AuthenticationHelper.HashPassword(request.Password);
+        //    request.Password = password;
 
-            var response = await _jwtManager.Login(request);
+        //    var response = await _jwtManager.Login(request);
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        [HttpPost]
-        public async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract request)
-        {
-            string password = await AuthenticationHelper.HashPassword(request.Password);
-            request.Password = password;
+        //[HttpPost]
+        //public async Task<MessageContract<UserResponseContract>> GenerateToken(UserClaimContract request)
+        //{
+        //    string password = await AuthenticationHelper.HashPassword(request.Password);
+        //    request.Password = password;
 
-            var response = await _jwtManager.GenerateToken(request);
+        //    var response = await _jwtManager.GenerateToken(request);
 
-            return response;
-        }
+        //    return response;
+        //}
 
-        [HttpPost]
-        public async Task<MessageContract<UserResponseContract>> RegenerateToken(RegenerateTokenContract request)
-        {
-            var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
-            var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long>
-            {
-                Id = request.UserId
-            });
+        //[HttpPost]
+        //public async Task<MessageContract<UserResponseContract>> RegenerateToken(RegenerateTokenContract request)
+        //{
+        //    var logic = _unitOfWork.GetLongContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract>();
+        //    var user = await logic.GetById(new Cores.Contracts.Requests.GetIdRequestContract<long>
+        //    {
+        //        Id = request.UserId
+        //    });
 
-            if (user)
-            {
+        //    if (user)
+        //    {
 
-                string password = user.Result.Password;
+        //        string password = user.Result.Password;
 
-                var req = new UserClaimContract
-                {
-                    Password = password,
-                    UserName = user.Result.UserName,
-                    Claims = request.Claims
-                };
+        //        var req = new UserClaimContract
+        //        {
+        //            Password = password,
+        //            UserName = user.Result.UserName,
+        //            Claims = request.Claims
+        //        };
 
-                var response = await _jwtManager.GenerateToken(req);
+        //        var response = await _jwtManager.GenerateToken(req);
 
-                return new UserResponseContract
-                {
-                    Token = response.Result.Token
-                };
-            }
+        //        return new UserResponseContract
+        //        {
+        //            Token = response.Result.Token
+        //        };
+        //    }
 
-            return user.ToContract<UserResponseContract>();
-        }
+        //    return user.ToContract<UserResponseContract>();
+        //}
 
-        [HttpGet]
-        [Authorize]
-        public string Test()
-        {
-            return "test";
-        }
+        //[HttpGet]
+        //[Authorize]
+        //public string Test()
+        //{
+        //    return "test";
+        //}
 
     }
 }

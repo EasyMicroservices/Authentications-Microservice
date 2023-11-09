@@ -73,7 +73,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
                                   });
             });
 
-            app.Services.AddScoped<IJWTManager, JWTManager>();
+            //app.Services.AddScoped<IJWTManager, JWTManager>();
 
             app.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
