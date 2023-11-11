@@ -51,11 +51,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
 
                 model.HasOne(u => u.Parent)
                 .WithMany(u => u.Parents)
-                .HasForeignKey(u => u.ParentId);
+                .HasForeignKey(u => u.ParentId)
+                .OnDelete(DeleteBehavior.Restrict);
 
                 model.HasOne(u => u.Child)
                 .WithMany(u => u.Children)
-                .HasForeignKey(u => u.ChildId);
+                .HasForeignKey(u => u.ChildId)
+                .OnDelete(DeleteBehavior.Restrict);
             });
 
             var result = base.AutoModelCreating(modelBuilder);

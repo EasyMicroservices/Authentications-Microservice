@@ -47,13 +47,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         column: x => x.ChildId,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RoleParentChildren_Roles_ParentId",
                         column: x => x.ParentId,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(

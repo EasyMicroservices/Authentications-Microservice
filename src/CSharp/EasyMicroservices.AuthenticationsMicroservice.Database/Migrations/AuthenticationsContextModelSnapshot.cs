@@ -649,13 +649,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Child")
                         .WithMany("Children")
                         .HasForeignKey("ChildId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Parent")
                         .WithMany("Parents")
                         .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Child");
