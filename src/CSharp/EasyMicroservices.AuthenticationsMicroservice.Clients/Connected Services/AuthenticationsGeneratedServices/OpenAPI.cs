@@ -4725,7 +4725,7 @@ namespace Authentications.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<MessageContract> UserHasExistsByUsernameAsync(UserHasExistsByUsernameRequestContract body)
+        public virtual System.Threading.Tasks.Task<UserContractMessageContract> UserHasExistsByUsernameAsync(UserHasExistsByUsernameRequestContract body)
         {
             return UserHasExistsByUsernameAsync(body, System.Threading.CancellationToken.None);
         }
@@ -4733,7 +4733,7 @@ namespace Authentications.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<MessageContract> UserHasExistsByUsernameAsync(UserHasExistsByUsernameRequestContract body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<UserContractMessageContract> UserHasExistsByUsernameAsync(UserHasExistsByUsernameRequestContract body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Users/UserHasExistsByUsername");
@@ -4774,7 +4774,7 @@ namespace Authentications.GeneratedServices
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<MessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<UserContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
@@ -4803,7 +4803,7 @@ namespace Authentications.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<MessageContract> VerifyUserIdentityAsync(UserSummaryContract body)
+        public virtual System.Threading.Tasks.Task<UserContractMessageContract> VerifyUserIdentityAsync(UserSummaryContract body)
         {
             return VerifyUserIdentityAsync(body, System.Threading.CancellationToken.None);
         }
@@ -4811,7 +4811,7 @@ namespace Authentications.GeneratedServices
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<MessageContract> VerifyUserIdentityAsync(UserSummaryContract body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<UserContractMessageContract> VerifyUserIdentityAsync(UserSummaryContract body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Users/VerifyUserIdentity");
@@ -4852,7 +4852,7 @@ namespace Authentications.GeneratedServices
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<MessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<UserContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
