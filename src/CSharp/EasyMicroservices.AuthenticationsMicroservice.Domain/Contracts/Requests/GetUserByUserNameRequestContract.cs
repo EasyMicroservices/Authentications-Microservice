@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests
 {
-    public class UserHasExistsByUsernameRequestContract
+    public class GetUserByUserNameRequestContract
     {
         public string Username { get; set; }
     }

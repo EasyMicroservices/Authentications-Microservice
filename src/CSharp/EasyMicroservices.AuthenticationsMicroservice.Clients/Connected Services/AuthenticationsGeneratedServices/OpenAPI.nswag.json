@@ -2526,27 +2526,27 @@
         }
       }
     },
-    "/api/Users/UserHasExistsByUsername": {
+    "/api/Users/GetUserByUserName": {
       "post": {
         "tags": [
           "Users"
         ],
-        "operationId": "UserHasExistsByUsername",
+        "operationId": "GetUserByUserName",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserHasExistsByUsernameRequestContract"
+                "$ref": "#/components/schemas/GetUserByUserNameRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserHasExistsByUsernameRequestContract"
+                "$ref": "#/components/schemas/GetUserByUserNameRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UserHasExistsByUsernameRequestContract"
+                "$ref": "#/components/schemas/GetUserByUserNameRequestContract"
               }
             }
           }
@@ -3623,6 +3623,16 @@
           7
         ]
       },
+      "GetUserByUserNameRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "Int64DeleteBulkRequestContract": {
         "title": "DeleteBulkRequestContract<Int64>",
         "type": "object",
@@ -4142,16 +4152,6 @@
             "items": {
               "$ref": "#/components/schemas/UserContract"
             }
-          }
-        }
-      },
-      "UserHasExistsByUsernameRequestContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "username": {
-            "type": "string",
-            "nullable": true
           }
         }
       },

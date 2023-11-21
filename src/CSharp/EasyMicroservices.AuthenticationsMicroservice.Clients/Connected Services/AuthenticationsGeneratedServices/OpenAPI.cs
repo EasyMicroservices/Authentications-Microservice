@@ -4725,18 +4725,18 @@ namespace Authentications.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<UserContractMessageContract> UserHasExistsByUsernameAsync(UserHasExistsByUsernameRequestContract body)
+        public virtual System.Threading.Tasks.Task<UserContractMessageContract> GetUserByUserNameAsync(GetUserByUserNameRequestContract body)
         {
-            return UserHasExistsByUsernameAsync(body, System.Threading.CancellationToken.None);
+            return GetUserByUserNameAsync(body, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<UserContractMessageContract> UserHasExistsByUsernameAsync(UserHasExistsByUsernameRequestContract body, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<UserContractMessageContract> GetUserByUserNameAsync(GetUserByUserNameRequestContract body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Users/UserHasExistsByUsername");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Users/GetUserByUserName");
 
             var client_ = _httpClient;
             var disposeClient_ = false;
@@ -6899,6 +6899,36 @@ namespace Authentications.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class GetUserByUserNameRequestContract : System.ComponentModel.INotifyPropertyChanged
+    {
+        private string _username;
+
+        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Username
+        {
+            get { return _username; }
+
+            set
+            {
+                if (_username != value)
+                {
+                    _username = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
     public partial class Int64DeleteBulkRequestContract : System.ComponentModel.INotifyPropertyChanged
     {
         private System.Collections.Generic.ICollection<long> _ids;
@@ -8591,36 +8621,6 @@ namespace Authentications.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class UserHasExistsByUsernameRequestContract : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _username;
-
-        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username
-        {
-            get { return _username; }
-
-            set
-            {
-                if (_username != value)
-                {
-                    _username = value;
                     RaisePropertyChanged();
                 }
             }

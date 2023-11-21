@@ -24,7 +24,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<MessageContract<UserContract>> UserHasExistsByUsername(UserHasExistsByUsernameRequestContract request)
+        public async Task<MessageContract<UserContract>> GetUserByUserName(GetUserByUserNameRequestContract request)
         {
             return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>().GetBy(x => x.UserName == request.Username);
         }
