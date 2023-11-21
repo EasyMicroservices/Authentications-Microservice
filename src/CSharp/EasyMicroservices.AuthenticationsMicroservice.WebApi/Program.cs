@@ -1,5 +1,4 @@
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
-using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Interfaces;
