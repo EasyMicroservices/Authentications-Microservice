@@ -2526,27 +2526,27 @@
         }
       }
     },
-    "/api/Users/VerifyUserName": {
+    "/api/Users/GetUserByUserName": {
       "post": {
         "tags": [
           "Users"
         ],
-        "operationId": "VerifyUserName",
+        "operationId": "GetUserByUserName",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/VerifyEmailAddressContract"
+                "$ref": "#/components/schemas/GetUserByUserNameRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/VerifyEmailAddressContract"
+                "$ref": "#/components/schemas/GetUserByUserNameRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/VerifyEmailAddressContract"
+                "$ref": "#/components/schemas/GetUserByUserNameRequestContract"
               }
             }
           }
@@ -2557,17 +2557,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BooleanMessageContract"
+                  "$ref": "#/components/schemas/UserContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BooleanMessageContract"
+                  "$ref": "#/components/schemas/UserContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BooleanMessageContract"
+                  "$ref": "#/components/schemas/UserContractMessageContract"
                 }
               }
             }
@@ -2575,61 +2575,12 @@
         }
       }
     },
-    "/api/Users/Register": {
+    "/api/Users/VerifyUserIdentity": {
       "post": {
         "tags": [
           "Users"
         ],
-        "operationId": "Register",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddUserRequestContract"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddUserRequestContract"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/AddUserRequestContract"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Users/Login": {
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "operationId": "Login",
+        "operationId": "VerifyUserIdentity",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2655,145 +2606,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
+                  "$ref": "#/components/schemas/UserContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
+                  "$ref": "#/components/schemas/UserContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Users/GenerateToken": {
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "operationId": "GenerateToken",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserClaimContract"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserClaimContract"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UserClaimContract"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Users/RegenerateToken": {
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "operationId": "RegenerateToken",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegenerateTokenContract"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegenerateTokenContract"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RegenerateTokenContract"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserResponseContractMessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Users/Test": {
-      "get": {
-        "tags": [
-          "Users"
-        ],
-        "operationId": "Test",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "string"
+                  "$ref": "#/components/schemas/UserContractMessageContract"
                 }
               }
             }
@@ -3422,6 +3245,30 @@
   },
   "components": {
     "schemas": {
+      "AccessPermissionType": {
+        "type": "integer",
+        "format": "int32",
+        "x-enumNames": [
+          "None",
+          "Default",
+          "All",
+          "Other",
+          "Unknown",
+          "Nothing",
+          "Granted",
+          "Denied"
+        ],
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
       "AddRoleRequestContract": {
         "type": "object",
         "additionalProperties": false,
@@ -3497,6 +3344,9 @@
           "methodName": {
             "type": "string",
             "nullable": true
+          },
+          "accessType": {
+            "$ref": "#/components/schemas/AccessPermissionType"
           }
         }
       },
@@ -3570,39 +3420,6 @@
             "items": {
               "$ref": "#/components/schemas/AddUserRoleRequestContract"
             }
-          }
-        }
-      },
-      "BooleanMessageContract": {
-        "title": "MessageContract<Boolean>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "success": {
-            "$ref": "#/components/schemas/SuccessContract"
-          },
-          "result": {
-            "type": "boolean"
-          }
-        }
-      },
-      "ClaimContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
-            "type": "string",
-            "nullable": true
           }
         }
       },
@@ -3806,6 +3623,16 @@
           7
         ]
       },
+      "GetUserByUserNameRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "username": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "Int64DeleteBulkRequestContract": {
         "title": "DeleteBulkRequestContract<Int64>",
         "type": "object",
@@ -3909,24 +3736,6 @@
           },
           "success": {
             "$ref": "#/components/schemas/SuccessContract"
-          }
-        }
-      },
-      "RegenerateTokenContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "claims": {
-            "title": "List<ClaimContract>",
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/ClaimContract"
-            }
           }
         }
       },
@@ -4148,6 +3957,9 @@
           "methodName": {
             "type": "string",
             "nullable": true
+          },
+          "accessType": {
+            "$ref": "#/components/schemas/AccessPermissionType"
           }
         }
       },
@@ -4234,28 +4046,6 @@
           "endUserMessage": {
             "type": "string",
             "nullable": true
-          }
-        }
-      },
-      "UserClaimContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "claims": {
-            "title": "List<ClaimContract>",
-            "type": "array",
-            "nullable": true,
-            "items": {
-              "$ref": "#/components/schemas/ClaimContract"
-            }
           }
         }
       },
@@ -4365,39 +4155,6 @@
           }
         }
       },
-      "UserResponseContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "token": {
-            "type": "string",
-            "nullable": true
-          },
-          "uniqueIdentity": {
-            "type": "string",
-            "nullable": true
-          }
-        }
-      },
-      "UserResponseContractMessageContract": {
-        "title": "MessageContract<UserResponseContract>",
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "isSuccess": {
-            "type": "boolean"
-          },
-          "error": {
-            "$ref": "#/components/schemas/ErrorContract"
-          },
-          "success": {
-            "$ref": "#/components/schemas/SuccessContract"
-          },
-          "result": {
-            "$ref": "#/components/schemas/UserResponseContract"
-          }
-        }
-      },
       "UserRoleContract": {
         "type": "object",
         "additionalProperties": false,
@@ -4495,16 +4252,6 @@
           "message": {
             "type": "string",
             "nullable": true
-          }
-        }
-      },
-      "VerifyEmailAddressContract": {
-        "type": "object",
-        "additionalProperties": false,
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int64"
           }
         }
       }

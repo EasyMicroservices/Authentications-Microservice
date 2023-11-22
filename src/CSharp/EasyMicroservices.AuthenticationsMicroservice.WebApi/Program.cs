@@ -1,5 +1,4 @@
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
-using EasyMicroservices.AuthenticationsMicroservice.Interfaces;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Interfaces;
@@ -73,7 +72,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
                                   });
             });
 
-            app.Services.AddScoped<IJWTManager, JWTManager>();
+            //app.Services.AddScoped<IJWTManager, JWTManager>();
 
             app.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
