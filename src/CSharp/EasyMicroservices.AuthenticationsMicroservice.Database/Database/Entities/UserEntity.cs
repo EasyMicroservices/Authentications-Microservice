@@ -8,5 +8,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Entities
     {
         public long Id { get; set; }
         public ICollection<UserRoleEntity> UserRoles { get; set; }
+        public ICollection<PersonalAccessTokenEntity> PersonalAccessTokens { get; set; }
     }
 }

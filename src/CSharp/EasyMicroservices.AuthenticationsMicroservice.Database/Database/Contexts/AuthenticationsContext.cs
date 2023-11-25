@@ -3,6 +3,7 @@ using EasyMicroservices.AuthenticationsMicroservice.SeedData;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
 {
@@ -18,6 +19,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
         public DbSet<ServicePermissionEntity> ServicePermissions { get; set; }
         public DbSet<RoleServicePermissionEntity> RoleServicePermissions { get; set; }
         public DbSet<RoleParentChildEntity> RoleParentChildren { get; set; }
+        public DbSet<PersonalAccessTokenEntity> PersonalAccessTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
