@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 {
-    public class UsersController : SimpleQueryServiceController<UserEntity, AddUserRequestContract, UserContract, UserContract, long>
+    public class UserController : SimpleQueryServiceController<UserEntity, AddUserRequestContract, UserContract, UserContract, long>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public UsersController(IUnitOfWork unitOfWork) : base(unitOfWork)
+        public UserController(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
