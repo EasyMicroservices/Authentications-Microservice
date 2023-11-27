@@ -1,24 +1,14 @@
-﻿using EasyMicroservices.Cores.Database.Interfaces;
+﻿using EasyMicroservices.Cores.Database.Schemas;
 using EasyMicroservices.Cores.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Database.Schemas
 {
-    public class UserSchema : IUniqueIdentitySchema, ISoftDeleteSchema, IDateTimeSchema
+    public class UserSchema : FullAbilitySchema
     {
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        public string UniqueIdentity { get; set; }
-        public DateTime CreationDateTime { get; set; }
-        public DateTime? ModificationDateTime { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateTime? DeletedDateTime { get; set; }
-        public bool IsUsernameVerified { get; set; }
+        public bool IsVerified { get; set; }
     }
 }

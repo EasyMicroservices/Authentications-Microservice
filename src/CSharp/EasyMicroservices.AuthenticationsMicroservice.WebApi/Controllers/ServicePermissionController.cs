@@ -4,6 +4,7 @@ using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ListMessageContract<ServicePermissionContract>> GetAllPermissionsBy(ServicePermissionRequestContract request, CancellationToken cancellationToken)
         {
             request.RoleName.ThrowIfNullOrEmpty(nameof(request.RoleName));

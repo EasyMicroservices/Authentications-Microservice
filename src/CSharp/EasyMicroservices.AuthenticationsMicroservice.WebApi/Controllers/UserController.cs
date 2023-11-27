@@ -4,6 +4,7 @@ using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,6 +32,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<MessageContract<UserContract>> GetUserByPersonalAccessToken(PersonalAccessTokenRequestContract request)
         {
             var result = await _unitOfWork.GetLongLogic<PersonalAccessTokenEntity>().GetBy(x => x.Value == request.Value

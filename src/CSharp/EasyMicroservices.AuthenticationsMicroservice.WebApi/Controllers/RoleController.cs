@@ -5,6 +5,7 @@ using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +18,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ListMessageContract<RoleContract>> GetRolesByUserId(GetIdRequestContract<long> request)
         {
             var result = await UnitOfWork.GetLongLogic<UserRoleEntity>()
