@@ -1,5 +1,7 @@
 ﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.Cores.Database.Schemas;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
 {
@@ -9,7 +11,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
         {
             modelBuilder
                 .Entity<RoleEntity>()
-                .HasData(
+                .HasData(FixDefaultValues(
                 new RoleEntity()
                 {
                     Id = 1,
@@ -59,10 +61,10 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                 {
                     Id = 10,
                     Name = "SoftReader"
-                });
+                }));
             modelBuilder
                .Entity<RoleParentChildEntity>()
-               .HasData(
+               .HasData(FixDefaultValues(
                         new RoleParentChildEntity()
                         {
                             ChildId = 1,
@@ -111,11 +113,11 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                         {
                             ChildId = 2,
                             ParentId = 9
-                        });
+                        }));
 
             modelBuilder
                  .Entity<ServicePermissionEntity>()
-                 .HasData(
+                 .HasData(FixDefaultValues(
                  //owner full access
                  new ServicePermissionEntity()
                  {
@@ -270,11 +272,11 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                      //any microservice
                      MicroserviceName = null,
                      AccessType = DataTypes.AccessPermissionType.Granted
-                 }
+                 })
                  );
             modelBuilder
                 .Entity<RoleServicePermissionEntity>()
-                .HasData(
+                .HasData(FixDefaultValues(
                 //owner full access
                 new RoleServicePermissionEntity()
                 {
@@ -363,8 +365,44 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                     Id = 14,
                     RoleId = 4,
                     ServicePermissionId = 14
-                }
-                );
+                }));
+
+            modelBuilder
+                .Entity<UserEntity>()
+                .HasData(FixDefaultValues(new UserEntity()
+                {
+                    Id = 1,
+                    UserName = "Owner",
+                    IsVerified = true
+                }));
+
+            modelBuilder
+                .Entity<UserRoleEntity>()
+                .HasData(FixDefaultValues(new UserRoleEntity()
+                {
+                    Id = 1,
+                    UserId = 1,
+                    RoleId = 1
+                }));
+
+            modelBuilder
+                .Entity<PersonalAccessTokenEntity>()
+                .HasData(FixDefaultValues(new PersonalAccessTokenEntity()
+                {
+                    Id = 1,
+                    UserId = 1,
+                    Value = "ownerpat"
+                }));
+        }
+
+        static T[] FixDefaultValues<T>(params T[] values)
+            where T : FullAbilitySchema
+        {
+            foreach (var item in values)
+            {
+                item.CreationDateTime = DateTime.Now;
+            }
+            return values;
         }
     }
 }

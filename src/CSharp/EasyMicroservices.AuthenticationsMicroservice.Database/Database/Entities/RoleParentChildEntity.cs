@@ -1,6 +1,8 @@
-﻿namespace EasyMicroservices.AuthenticationsMicroservice.Database.Entities
+﻿using EasyMicroservices.Cores.Database.Schemas;
+
+namespace EasyMicroservices.AuthenticationsMicroservice.Database.Entities
 {
-    public class RoleParentChildEntity
+    public class RoleParentChildEntity : FullAbilitySchema
     {
         public long ChildId { get; set; }
         public long ParentId { get; set; }
