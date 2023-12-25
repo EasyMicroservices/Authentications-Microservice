@@ -8,6 +8,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Common
 {
     public class RoleServicePermissionContract
     {
+        public long Id { get; set; }
         public long RoleId { get; set; }
         public long ServicePermissionId { get; set; }
     }
