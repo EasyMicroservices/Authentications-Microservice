@@ -19,10 +19,12 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ListMessageContract<RoleContract>> GetRolesByUserId(GetIdRequestContract<long> request)
+        public async Task<ListMessageContract<RoleContract>> GetRolesByUserId(GetByIdAndUniqueIdentityRequestContract request)
         {
             var result = await UnitOfWork.GetLongLogic<UserRoleEntity>()
-                .GetAll(q => q.Include(x => x.User)
+                .GetAllByUniqueIdentity(request,
+                    Cores.DataTypes.GetUniqueIdentityType.All,
+                    q => q.Include(x => x.User)
                 .Include(x => x.Role)
                 .Where(x => x.UserId == request.Id))
                 .AsCheckedResult();

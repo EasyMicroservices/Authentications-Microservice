@@ -67,52 +67,52 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                .HasData(FixDefaultValues(
                         new RoleParentChildEntity()
                         {
-                            ChildId = 1,
-                            ParentId = 2
+                            ChildId = 2,
+                            ParentId = 1
                         }, new RoleParentChildEntity()
                         {
-                            ChildId = 2,
+                            ChildId = 3,
+                            ParentId = 2
+                        },
+                        new RoleParentChildEntity()
+                        {
+                            ChildId = 4,
+                            ParentId = 2
+                        },
+                        new RoleParentChildEntity()
+                        {
+                            ChildId = 5,
                             ParentId = 3
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 2,
-                            ParentId = 4
+                            ChildId = 6,
+                            ParentId = 3
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 3,
+                            ChildId = 7,
                             ParentId = 5
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 3,
-                            ParentId = 6
+                            ChildId = 8,
+                            ParentId = 5
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 5,
-                            ParentId = 7
+                            ChildId = 9,
+                            ParentId = 5
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 5,
-                            ParentId = 8
+                            ChildId = 10,
+                            ParentId = 5
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 5,
-                            ParentId = 9
-                        },
-                        new RoleParentChildEntity()
-                        {
-                            ChildId = 5,
-                            ParentId = 10
-                        },
-                        new RoleParentChildEntity()
-                        {
-                            ChildId = 2,
-                            ParentId = 9
+                            ChildId = 9,
+                            ParentId = 2
                         }));
 
             modelBuilder
