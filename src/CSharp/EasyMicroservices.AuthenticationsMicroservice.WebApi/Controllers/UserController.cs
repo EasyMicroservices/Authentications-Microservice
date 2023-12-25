@@ -22,13 +22,19 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         [HttpPost]
         public async Task<MessageContract<UserContract>> GetUserByUserName(GetUserByUserNameRequestContract request)
         {
-            return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>().GetBy(x => x.UserName == request.Username);
+            return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>()
+                .GetByUniqueIdentity(request,
+                Cores.DataTypes.GetUniqueIdentityType.All,
+                q => q.Where(x => x.UserName == request.UserName));
         }
 
         [HttpPost]
         public async Task<MessageContract<UserContract>> VerifyUserIdentity(UserSummaryContract request)
         {
-            return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>().GetBy(x => x.UserName == request.UserName && x.Password == request.Password);
+            return await _unitOfWork.GetContractLogic<UserEntity, AddUserRequestContract, UserContract, UserContract, long>()
+                .GetByUniqueIdentity(request,
+                Cores.DataTypes.GetUniqueIdentityType.All,
+                q => q.Where(x => x.UserName == request.UserName && x.Password == request.Password));
         }
 
         [HttpPost]

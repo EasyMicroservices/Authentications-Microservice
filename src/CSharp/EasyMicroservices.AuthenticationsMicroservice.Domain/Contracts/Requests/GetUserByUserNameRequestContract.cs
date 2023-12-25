@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EasyMicroservices.Cores.Interfaces;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests
 {
-    public class GetUserByUserNameRequestContract
+    public class GetUserByUserNameRequestContract : IUniqueIdentitySchema
     {
-        public string Username { get; set; }
+        public string UserName { get; set; }
+        public string UniqueIdentity { get; set; }
     }
 }

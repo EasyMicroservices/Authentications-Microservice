@@ -7,6 +7,7 @@ using EasyMicroservices.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 {
@@ -33,7 +34,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
                 .Where(x => roleIds.Contains(x.RoleId) && (x.ServicePermission.MicroserviceName == null || x.ServicePermission.MicroserviceName == request.MicroserviceName))
                 .Select(x => x.ServicePermission)
                 .ToListAsync(cancellationToken);
-
+            if (request.UniqueIdentity.HasValue())
+                servicePermissions = servicePermissions.Where(x => x.UniqueIdentity.StartsWith(request.UniqueIdentity + "-")).ToList();
             return UnitOfWork.GetMapper().MapToList<ServicePermissionContract>(servicePermissions.Distinct());
         }
 

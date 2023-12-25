@@ -1,21 +1,21 @@
-﻿using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
+﻿using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace EasyMicroservices.AuthenticationsMicroservice
 {
-    public class DatabaseBuilder : IEntityFrameworkCoreDatabaseBuilder
+    public class DatabaseBuilder : EntityFrameworkCoreDatabaseBuilder
     {
-        IConfiguration _configuration;
-        public DatabaseBuilder(IConfiguration configuration)
+        public DatabaseBuilder(IConfiguration configuration) : base(configuration)
         {
-            _configuration = configuration;
         }
 
-        public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder, string name)
         {
-            optionsBuilder.UseInMemoryDatabase("AuthDb");
-            //optionsBuilder.UseSqlServer(_configuration.GetConnectionString("local"));
+            if (name == "SqlServer")
+                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("local"));
+            else
+                optionsBuilder.UseInMemoryDatabase("Authentication");
         }
     }
 }

@@ -16,7 +16,7 @@
   <PropertyGroup>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IsPackable>true</IsPackable>
     <Version>0.0.0.3</Version>
     <Description>authentication virtual server for tests</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
