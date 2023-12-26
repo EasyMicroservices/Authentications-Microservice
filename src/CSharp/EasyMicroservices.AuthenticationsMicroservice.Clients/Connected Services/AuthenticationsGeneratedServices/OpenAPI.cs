@@ -8595,6 +8595,7 @@ namespace Authentications.GeneratedServices
     {
         private string _userName;
         private string _password;
+        private string _uniqueIdentity;
 
         [Newtonsoft.Json.JsonProperty("userName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string UserName
@@ -8621,6 +8622,21 @@ namespace Authentications.GeneratedServices
                 if (_password != value)
                 {
                     _password = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("uniqueIdentity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string UniqueIdentity
+        {
+            get { return _uniqueIdentity; }
+
+            set
+            {
+                if (_uniqueIdentity != value)
+                {
+                    _uniqueIdentity = value;
                     RaisePropertyChanged();
                 }
             }
@@ -10381,8 +10397,24 @@ namespace Authentications.GeneratedServices
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
     public partial class RoleServicePermissionContract : System.ComponentModel.INotifyPropertyChanged
     {
+        private long _id;
         private long _roleId;
         private long _servicePermissionId;
+
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long Id
+        {
+            get { return _id; }
+
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         [Newtonsoft.Json.JsonProperty("roleId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long RoleId
