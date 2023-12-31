@@ -5,7 +5,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
 {
     public static class AuthenticationResource
     {
-        public static Dictionary<string, string> GetResources(string microseviceName, Dictionary<string, List<TestServicePermissionContract>> customRoles = default)
+        public static Dictionary<string, string> GetResources(string microserviceName, Dictionary<string, List<TestServicePermissionContract>> customRoles = default)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
             if (customRoles == null)
@@ -16,7 +16,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
                 {
                      ServiceName = "TestService",
                      MethodName = "TestMethod",
-                     MicroserviceName =  microseviceName,
+                     MicroserviceName =  microserviceName,
                 }
             });
            
@@ -30,7 +30,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
                 result.Add(@$"POST /api/ServicePermission/GetAllPermissionsBy HTTP/1.1
 *RequestSkipBody*
 
-{{""RoleName"":""{item.Key}"",""MicroserviceName"":""{microseviceName}"",""UniqueIdentity"":null}}"
+{{""RoleName"":""{item.Key}"",""MicroserviceName"":""{microserviceName}""*RequestSkipBody*}}"
                 ,
                 @$"HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
