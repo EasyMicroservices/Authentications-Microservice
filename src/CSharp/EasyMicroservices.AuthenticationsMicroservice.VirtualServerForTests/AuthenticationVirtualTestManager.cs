@@ -7,12 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests
 {
     public class AuthenticationVirtualTestManager
     {
-        static Dictionary<int, ResourceManager> InitializedPorts = new Dictionary<int, ResourceManager>();
+        static ConcurrentDictionary<int, ResourceManager> InitializedPorts = new ConcurrentDictionary<int, ResourceManager>();
         public int CurrentPortNumber { get; set; }
 
         public async Task<bool> OnInitialize(int portNumber, BaseHandler handler = null)
