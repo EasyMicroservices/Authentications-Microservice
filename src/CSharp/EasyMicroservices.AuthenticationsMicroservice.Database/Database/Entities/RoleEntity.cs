@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Schemas;
+﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+using EasyMicroservices.AuthenticationsMicroservice.Database.Schemas;
 using EasyMicroservices.Cores.Interfaces;
 using System.Collections.Generic;
 
@@ -11,5 +12,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Entities
         public ICollection<RoleParentChildEntity> Children { get; set; }
         public ICollection<UserRoleEntity> UserRoles { get; set; }
         public ICollection<RoleServicePermissionEntity> RoleServicePermissions { get; set; }
+        public ICollection<RegisterUserDefaultRoleEntity> RegisterUserDefaultRoles { get; set; }
     }
 }

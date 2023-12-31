@@ -72,11 +72,55 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(3061),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(878),
                             IsDeleted = false,
                             UserId = 1L,
                             Value = "ownerpat"
                         });
+                });
+
+            modelBuilder.Entity("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RegisterUserDefaultRoleEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreationDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModificationDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("RoleId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("UniqueIdentity")
+                        .HasColumnType("nvarchar(450)")
+                        .UseCollation("SQL_Latin1_General_CP1_CS_AS");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreationDateTime");
+
+                    b.HasIndex("DeletedDateTime");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ModificationDateTime");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UniqueIdentity");
+
+                    b.ToTable("RegisterUserDefaultRoles");
                 });
 
             modelBuilder.Entity("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", b =>
@@ -124,70 +168,70 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2492),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9578),
                             IsDeleted = false,
                             Name = "Owner"
                         },
                         new
                         {
                             Id = 2L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2506),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9598),
                             IsDeleted = false,
                             Name = "SystemAdmin"
                         },
                         new
                         {
                             Id = 3L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2507),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9599),
                             IsDeleted = false,
                             Name = "SuperAdmin"
                         },
                         new
                         {
                             Id = 4L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2507),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9601),
                             IsDeleted = false,
                             Name = "HardWriter"
                         },
                         new
                         {
                             Id = 5L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2508),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9603),
                             IsDeleted = false,
                             Name = "Moderator"
                         },
                         new
                         {
                             Id = 6L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2508),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9604),
                             IsDeleted = false,
                             Name = "HardReader"
                         },
                         new
                         {
                             Id = 7L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2508),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9606),
                             IsDeleted = false,
                             Name = "Operator"
                         },
                         new
                         {
                             Id = 8L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2509),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9607),
                             IsDeleted = false,
                             Name = "EndUser"
                         },
                         new
                         {
                             Id = 9L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2509),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9609),
                             IsDeleted = false,
                             Name = "SoftWriter"
                         },
                         new
                         {
                             Id = 10L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2509),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9611),
                             IsDeleted = false,
                             Name = "SoftReader"
                         });
@@ -236,72 +280,72 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.HasData(
                         new
                         {
+                            ParentId = 1L,
+                            ChildId = 2L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(254),
+                            IsDeleted = false
+                        },
+                        new
+                        {
                             ParentId = 2L,
-                            ChildId = 1L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2871),
+                            ChildId = 3L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(256),
+                            IsDeleted = false
+                        },
+                        new
+                        {
+                            ParentId = 2L,
+                            ChildId = 4L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(257),
                             IsDeleted = false
                         },
                         new
                         {
                             ParentId = 3L,
-                            ChildId = 2L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2872),
+                            ChildId = 5L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(257),
                             IsDeleted = false
                         },
                         new
                         {
-                            ParentId = 4L,
-                            ChildId = 2L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2872),
+                            ParentId = 3L,
+                            ChildId = 6L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(258),
                             IsDeleted = false
                         },
                         new
                         {
                             ParentId = 5L,
-                            ChildId = 3L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2873),
+                            ChildId = 7L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(258),
                             IsDeleted = false
                         },
                         new
                         {
-                            ParentId = 6L,
-                            ChildId = 3L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2873),
+                            ParentId = 5L,
+                            ChildId = 8L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(259),
                             IsDeleted = false
                         },
                         new
                         {
-                            ParentId = 7L,
-                            ChildId = 5L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2874),
+                            ParentId = 5L,
+                            ChildId = 9L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(259),
                             IsDeleted = false
                         },
                         new
                         {
-                            ParentId = 8L,
-                            ChildId = 5L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2874),
+                            ParentId = 5L,
+                            ChildId = 10L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(260),
                             IsDeleted = false
                         },
                         new
                         {
-                            ParentId = 9L,
-                            ChildId = 5L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2874),
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ParentId = 10L,
-                            ChildId = 5L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2875),
-                            IsDeleted = false
-                        },
-                        new
-                        {
-                            ParentId = 9L,
-                            ChildId = 2L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2875),
+                            ParentId = 2L,
+                            ChildId = 9L,
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(260),
                             IsDeleted = false
                         });
                 });
@@ -358,7 +402,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2991),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(539),
                             IsDeleted = false,
                             RoleId = 1L,
                             ServicePermissionId = 1L
@@ -366,7 +410,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 2L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2991),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(540),
                             IsDeleted = false,
                             RoleId = 10L,
                             ServicePermissionId = 2L
@@ -374,7 +418,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 3L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2991),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(541),
                             IsDeleted = false,
                             RoleId = 10L,
                             ServicePermissionId = 3L
@@ -382,7 +426,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 4L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2992),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(541),
                             IsDeleted = false,
                             RoleId = 10L,
                             ServicePermissionId = 4L
@@ -390,7 +434,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 5L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2992),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542),
                             IsDeleted = false,
                             RoleId = 6L,
                             ServicePermissionId = 5L
@@ -398,7 +442,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 6L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2993),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542),
                             IsDeleted = false,
                             RoleId = 6L,
                             ServicePermissionId = 6L
@@ -406,7 +450,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 7L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2993),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542),
                             IsDeleted = false,
                             RoleId = 9L,
                             ServicePermissionId = 7L
@@ -414,7 +458,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 8L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2993),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(543),
                             IsDeleted = false,
                             RoleId = 9L,
                             ServicePermissionId = 8L
@@ -422,7 +466,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 9L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2994),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(543),
                             IsDeleted = false,
                             RoleId = 9L,
                             ServicePermissionId = 9L
@@ -430,7 +474,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 10L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2994),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(544),
                             IsDeleted = false,
                             RoleId = 9L,
                             ServicePermissionId = 10L
@@ -438,7 +482,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 11L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2994),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(544),
                             IsDeleted = false,
                             RoleId = 9L,
                             ServicePermissionId = 11L
@@ -446,7 +490,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 12L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2995),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(545),
                             IsDeleted = false,
                             RoleId = 9L,
                             ServicePermissionId = 12L
@@ -454,7 +498,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 13L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2995),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(545),
                             IsDeleted = false,
                             RoleId = 4L,
                             ServicePermissionId = 13L
@@ -462,7 +506,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 14L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2995),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(546),
                             IsDeleted = false,
                             RoleId = 4L,
                             ServicePermissionId = 14L
@@ -534,14 +578,14 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 1L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2915),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(444),
                             IsDeleted = false
                         },
                         new
                         {
                             Id = 2L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2915),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(447),
                             IsDeleted = false,
                             MethodName = "GetById"
                         },
@@ -549,7 +593,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 3L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2916),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(448),
                             IsDeleted = false,
                             MethodName = "Filter"
                         },
@@ -557,7 +601,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 4L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2916),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(449),
                             IsDeleted = false,
                             MethodName = "GetByUniqueIdentity"
                         },
@@ -565,7 +609,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 5L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2917),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(450),
                             IsDeleted = false,
                             MethodName = "GetAllByUniqueIdentity"
                         },
@@ -573,7 +617,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 6L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2917),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(450),
                             IsDeleted = false,
                             MethodName = "GetAll"
                         },
@@ -581,7 +625,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 7L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2917),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(451),
                             IsDeleted = false,
                             MethodName = "Add"
                         },
@@ -589,7 +633,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 8L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2918),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(451),
                             IsDeleted = false,
                             MethodName = "Update"
                         },
@@ -597,7 +641,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 9L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2918),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(452),
                             IsDeleted = false,
                             MethodName = "SoftDeleteById"
                         },
@@ -605,7 +649,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 10L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2918),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(452),
                             IsDeleted = false,
                             MethodName = "SoftDeleteBulkByIds"
                         },
@@ -613,7 +657,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 11L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2919),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453),
                             IsDeleted = false,
                             MethodName = "AddBulk"
                         },
@@ -621,7 +665,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 12L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2919),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453),
                             IsDeleted = false,
                             MethodName = "UpdateBulk"
                         },
@@ -629,7 +673,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 13L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2919),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453),
                             IsDeleted = false,
                             MethodName = "HardDeleteById"
                         },
@@ -637,7 +681,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         {
                             Id = 14L,
                             AccessType = (byte)6,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2920),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(454),
                             IsDeleted = false,
                             MethodName = "HardDeleteBulkByIds"
                         });
@@ -650,6 +694,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("BusinessUniqueIdentity")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreationDateTime")
                         .HasColumnType("datetime2");
@@ -691,9 +738,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
 
                     b.HasIndex("UniqueIdentity");
 
-                    b.HasIndex("UserName")
+                    b.HasIndex("BusinessUniqueIdentity", "UserName")
                         .IsUnique()
-                        .HasFilter("[UserName] IS NOT NULL");
+                        .HasFilter("[BusinessUniqueIdentity] IS NOT NULL AND [UserName] IS NOT NULL");
 
                     b.ToTable("Users");
 
@@ -701,9 +748,11 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(3022),
+                            BusinessUniqueIdentity = "1-2",
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(773),
                             IsDeleted = false,
                             IsVerified = true,
+                            UniqueIdentity = "1-2",
                             UserName = "Owner"
                         });
                 });
@@ -760,9 +809,10 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(3040),
+                            CreationDateTime = new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(847),
                             IsDeleted = false,
                             RoleId = 1L,
+                            UniqueIdentity = "1-2",
                             UserId = 1L
                         });
                 });
@@ -772,10 +822,21 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.UserEntity", "User")
                         .WithMany("PersonalAccessTokens")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RegisterUserDefaultRoleEntity", b =>
+                {
+                    b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Role")
+                        .WithMany("RegisterUserDefaultRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleParentChildEntity", b =>
@@ -802,13 +863,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Role")
                         .WithMany("RoleServicePermissions")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.ServicePermissionEntity", "ServicePermission")
                         .WithMany("RoleServicePermissions")
                         .HasForeignKey("ServicePermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Role");
@@ -821,13 +882,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.RoleEntity", "Role")
                         .WithMany("UserRoles")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EasyMicroservices.AuthenticationsMicroservice.Database.Entities.UserEntity", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Role");
@@ -840,6 +901,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     b.Navigation("Children");
 
                     b.Navigation("Parents");
+
+                    b.Navigation("RegisterUserDefaultRoles");
 
                     b.Navigation("RoleServicePermissions");
 

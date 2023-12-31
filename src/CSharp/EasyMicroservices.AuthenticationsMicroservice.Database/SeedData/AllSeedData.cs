@@ -71,48 +71,48 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                             ParentId = 1
                         }, new RoleParentChildEntity()
                         {
-                            ChildId = 3,
-                            ParentId = 2
+                            ChildId = 2,
+                            ParentId = 3
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 4,
-                            ParentId = 2
+                            ChildId = 2,
+                            ParentId = 4
+                        },
+                        new RoleParentChildEntity()
+                        {
+                            ChildId = 3,
+                            ParentId = 5
+                        },
+                        new RoleParentChildEntity()
+                        {
+                            ChildId = 3,
+                            ParentId = 6
                         },
                         new RoleParentChildEntity()
                         {
                             ChildId = 5,
-                            ParentId = 3
+                            ParentId = 7
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 6,
-                            ParentId = 3
+                            ChildId = 5,
+                            ParentId = 8
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 7,
-                            ParentId = 5
+                            ChildId = 5,
+                            ParentId = 9
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 8,
-                            ParentId = 5
+                            ChildId = 5,
+                            ParentId = 10
                         },
                         new RoleParentChildEntity()
                         {
-                            ChildId = 9,
-                            ParentId = 5
-                        },
-                        new RoleParentChildEntity()
-                        {
-                            ChildId = 10,
-                            ParentId = 5
-                        },
-                        new RoleParentChildEntity()
-                        {
-                            ChildId = 9,
-                            ParentId = 2
+                            ChildId = 2,
+                            ParentId = 9
                         }));
 
             modelBuilder
@@ -373,7 +373,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                 {
                     Id = 1,
                     UserName = "Owner",
-                    IsVerified = true
+                    IsVerified = true,
+                    BusinessUniqueIdentity = "1-2",
+                    UniqueIdentity = "1-2"
                 }));
 
             modelBuilder
@@ -382,7 +384,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                 {
                     Id = 1,
                     UserId = 1,
-                    RoleId = 1
+                    RoleId = 1,
+                    UniqueIdentity =  "1-2"
                 }));
 
             modelBuilder

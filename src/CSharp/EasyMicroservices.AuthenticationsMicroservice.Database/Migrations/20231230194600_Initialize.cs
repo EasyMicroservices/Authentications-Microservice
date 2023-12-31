@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstInitialize : Migration
+    public partial class Initialize : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -65,11 +65,36 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                     UniqueIdentity = table.Column<string>(type: "nvarchar(450)", nullable: true, collation: "SQL_Latin1_General_CP1_CS_AS"),
                     UserName = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BusinessUniqueIdentity = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     IsVerified = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RegisterUserDefaultRoles",
+                columns: table => new
+                {
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<long>(type: "bigint", nullable: false),
+                    CreationDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModificationDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    DeletedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UniqueIdentity = table.Column<string>(type: "nvarchar(450)", nullable: true, collation: "SQL_Latin1_General_CP1_CS_AS")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RegisterUserDefaultRoles", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RegisterUserDefaultRoles_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,13 +148,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_RoleServicePermissions_ServicePermissions_ServicePermissionId",
                         column: x => x.ServicePermissionId,
                         principalTable: "ServicePermissions",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,7 +179,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -179,13 +204,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                         column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UserRoles_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -193,16 +218,16 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "Name", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2492), null, false, null, "Owner", null },
-                    { 2L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2506), null, false, null, "SystemAdmin", null },
-                    { 3L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2507), null, false, null, "SuperAdmin", null },
-                    { 4L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2507), null, false, null, "HardWriter", null },
-                    { 5L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2508), null, false, null, "Moderator", null },
-                    { 6L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2508), null, false, null, "HardReader", null },
-                    { 7L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2508), null, false, null, "Operator", null },
-                    { 8L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2509), null, false, null, "EndUser", null },
-                    { 9L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2509), null, false, null, "SoftWriter", null },
-                    { 10L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2509), null, false, null, "SoftReader", null }
+                    { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9578), null, false, null, "Owner", null },
+                    { 2L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9598), null, false, null, "SystemAdmin", null },
+                    { 3L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9599), null, false, null, "SuperAdmin", null },
+                    { 4L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9601), null, false, null, "HardWriter", null },
+                    { 5L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9603), null, false, null, "Moderator", null },
+                    { 6L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9604), null, false, null, "HardReader", null },
+                    { 7L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9606), null, false, null, "Operator", null },
+                    { 8L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9607), null, false, null, "EndUser", null },
+                    { 9L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9609), null, false, null, "SoftWriter", null },
+                    { 10L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9611), null, false, null, "SoftReader", null }
                 });
 
             migrationBuilder.InsertData(
@@ -210,47 +235,47 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 columns: new[] { "Id", "AccessType", "CreationDateTime", "DeletedDateTime", "IsDeleted", "MethodName", "MicroserviceName", "ModificationDateTime", "ServiceName", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2915), null, false, null, null, null, null, null },
-                    { 2L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2915), null, false, "GetById", null, null, null, null },
-                    { 3L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2916), null, false, "Filter", null, null, null, null },
-                    { 4L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2916), null, false, "GetByUniqueIdentity", null, null, null, null },
-                    { 5L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2917), null, false, "GetAllByUniqueIdentity", null, null, null, null },
-                    { 6L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2917), null, false, "GetAll", null, null, null, null },
-                    { 7L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2917), null, false, "Add", null, null, null, null },
-                    { 8L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2918), null, false, "Update", null, null, null, null },
-                    { 9L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2918), null, false, "SoftDeleteById", null, null, null, null },
-                    { 10L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2918), null, false, "SoftDeleteBulkByIds", null, null, null, null },
-                    { 11L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2919), null, false, "AddBulk", null, null, null, null },
-                    { 12L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2919), null, false, "UpdateBulk", null, null, null, null },
-                    { 13L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2919), null, false, "HardDeleteById", null, null, null, null },
-                    { 14L, (byte)6, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2920), null, false, "HardDeleteBulkByIds", null, null, null, null }
+                    { 1L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(444), null, false, null, null, null, null, null },
+                    { 2L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(447), null, false, "GetById", null, null, null, null },
+                    { 3L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(448), null, false, "Filter", null, null, null, null },
+                    { 4L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(449), null, false, "GetByUniqueIdentity", null, null, null, null },
+                    { 5L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(450), null, false, "GetAllByUniqueIdentity", null, null, null, null },
+                    { 6L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(450), null, false, "GetAll", null, null, null, null },
+                    { 7L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(451), null, false, "Add", null, null, null, null },
+                    { 8L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(451), null, false, "Update", null, null, null, null },
+                    { 9L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(452), null, false, "SoftDeleteById", null, null, null, null },
+                    { 10L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(452), null, false, "SoftDeleteBulkByIds", null, null, null, null },
+                    { 11L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453), null, false, "AddBulk", null, null, null, null },
+                    { 12L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453), null, false, "UpdateBulk", null, null, null, null },
+                    { 13L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453), null, false, "HardDeleteById", null, null, null, null },
+                    { 14L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(454), null, false, "HardDeleteBulkByIds", null, null, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "IsVerified", "ModificationDateTime", "Password", "UniqueIdentity", "UserName" },
-                values: new object[] { 1L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(3022), null, false, true, null, null, null, "Owner" });
+                columns: new[] { "Id", "BusinessUniqueIdentity", "CreationDateTime", "DeletedDateTime", "IsDeleted", "IsVerified", "ModificationDateTime", "Password", "UniqueIdentity", "UserName" },
+                values: new object[] { 1L, "1-2", new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(773), null, false, true, null, null, "1-2", "Owner" });
 
             migrationBuilder.InsertData(
                 table: "PersonalAccessTokens",
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "UniqueIdentity", "UserId", "Value" },
-                values: new object[] { 1L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(3061), null, false, null, null, 1L, "ownerpat" });
+                values: new object[] { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(878), null, false, null, null, 1L, "ownerpat" });
 
             migrationBuilder.InsertData(
                 table: "RoleParentChildren",
                 columns: new[] { "ChildId", "ParentId", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, 2L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2871), null, false, null, null },
-                    { 2L, 3L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2872), null, false, null, null },
-                    { 2L, 4L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2872), null, false, null, null },
-                    { 3L, 5L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2873), null, false, null, null },
-                    { 3L, 6L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2873), null, false, null, null },
-                    { 5L, 7L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2874), null, false, null, null },
-                    { 5L, 8L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2874), null, false, null, null },
-                    { 2L, 9L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2875), null, false, null, null },
-                    { 5L, 9L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2874), null, false, null, null },
-                    { 5L, 10L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2875), null, false, null, null }
+                    { 2L, 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(254), null, false, null, null },
+                    { 3L, 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(256), null, false, null, null },
+                    { 4L, 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(257), null, false, null, null },
+                    { 9L, 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(260), null, false, null, null },
+                    { 5L, 3L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(257), null, false, null, null },
+                    { 6L, 3L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(258), null, false, null, null },
+                    { 7L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(258), null, false, null, null },
+                    { 8L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(259), null, false, null, null },
+                    { 9L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(259), null, false, null, null },
+                    { 10L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(260), null, false, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -258,26 +283,26 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "RoleId", "ServicePermissionId", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2991), null, false, null, 1L, 1L, null },
-                    { 2L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2991), null, false, null, 10L, 2L, null },
-                    { 3L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2991), null, false, null, 10L, 3L, null },
-                    { 4L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2992), null, false, null, 10L, 4L, null },
-                    { 5L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2992), null, false, null, 6L, 5L, null },
-                    { 6L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2993), null, false, null, 6L, 6L, null },
-                    { 7L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2993), null, false, null, 9L, 7L, null },
-                    { 8L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2993), null, false, null, 9L, 8L, null },
-                    { 9L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2994), null, false, null, 9L, 9L, null },
-                    { 10L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2994), null, false, null, 9L, 10L, null },
-                    { 11L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2994), null, false, null, 9L, 11L, null },
-                    { 12L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2995), null, false, null, 9L, 12L, null },
-                    { 13L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2995), null, false, null, 4L, 13L, null },
-                    { 14L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(2995), null, false, null, 4L, 14L, null }
+                    { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(539), null, false, null, 1L, 1L, null },
+                    { 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(540), null, false, null, 10L, 2L, null },
+                    { 3L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(541), null, false, null, 10L, 3L, null },
+                    { 4L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(541), null, false, null, 10L, 4L, null },
+                    { 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542), null, false, null, 6L, 5L, null },
+                    { 6L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542), null, false, null, 6L, 6L, null },
+                    { 7L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542), null, false, null, 9L, 7L, null },
+                    { 8L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(543), null, false, null, 9L, 8L, null },
+                    { 9L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(543), null, false, null, 9L, 9L, null },
+                    { 10L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(544), null, false, null, 9L, 10L, null },
+                    { 11L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(544), null, false, null, 9L, 11L, null },
+                    { 12L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(545), null, false, null, 9L, 12L, null },
+                    { 13L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(545), null, false, null, 4L, 13L, null },
+                    { 14L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(546), null, false, null, 4L, 14L, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "RoleId", "UniqueIdentity", "UserId" },
-                values: new object[] { 1L, new DateTime(2023, 12, 4, 9, 38, 29, 68, DateTimeKind.Local).AddTicks(3040), null, false, null, 1L, null, 1L });
+                values: new object[] { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(847), null, false, null, 1L, "1-2", 1L });
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonalAccessTokens_CreationDateTime",
@@ -308,6 +333,36 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 name: "IX_PersonalAccessTokens_UserId",
                 table: "PersonalAccessTokens",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegisterUserDefaultRoles_CreationDateTime",
+                table: "RegisterUserDefaultRoles",
+                column: "CreationDateTime");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegisterUserDefaultRoles_DeletedDateTime",
+                table: "RegisterUserDefaultRoles",
+                column: "DeletedDateTime");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegisterUserDefaultRoles_IsDeleted",
+                table: "RegisterUserDefaultRoles",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegisterUserDefaultRoles_ModificationDateTime",
+                table: "RegisterUserDefaultRoles",
+                column: "ModificationDateTime");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegisterUserDefaultRoles_RoleId",
+                table: "RegisterUserDefaultRoles",
+                column: "RoleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_RegisterUserDefaultRoles_UniqueIdentity",
+                table: "RegisterUserDefaultRoles",
+                column: "UniqueIdentity");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleParentChildren_ChildId",
@@ -482,6 +537,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Users_BusinessUniqueIdentity_UserName",
+                table: "Users",
+                columns: new[] { "BusinessUniqueIdentity", "UserName" },
+                unique: true,
+                filter: "[BusinessUniqueIdentity] IS NOT NULL AND [UserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_CreationDateTime",
                 table: "Users",
                 column: "CreationDateTime");
@@ -511,13 +573,6 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 name: "IX_Users_UniqueIdentity",
                 table: "Users",
                 column: "UniqueIdentity");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Users_UserName",
-                table: "Users",
-                column: "UserName",
-                unique: true,
-                filter: "[UserName] IS NOT NULL");
         }
 
         /// <inheritdoc />
@@ -525,6 +580,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
         {
             migrationBuilder.DropTable(
                 name: "PersonalAccessTokens");
+
+            migrationBuilder.DropTable(
+                name: "RegisterUserDefaultRoles");
 
             migrationBuilder.DropTable(
                 name: "RoleParentChildren");

@@ -18,14 +18,11 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
         static WebApplicationBuilder CreateBuilder(string[] args)
         {
             var app = StartUpExtensions.Create<AuthenticationsContext>(args);
-            app.Services.Builder<AuthenticationsContext>().UseDefaultSwaggerOptions();
+            app.Services.Builder<AuthenticationsContext>("Authentication").UseDefaultSwaggerOptions();
             app.Services.AddTransient((serviceProvider) => new UnitOfWork(serviceProvider));
             app.Services.AddTransient(serviceProvider => new AuthenticationsContext(serviceProvider.GetService<IEntityFrameworkCoreDatabaseBuilder>()));
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
             app.Services.AddTransient<IBaseUnitOfWork, UnitOfWork>();
-            StartUpExtensions.AddWhiteLabel("Authentication", "RootAddresses:WhiteLabel");
-            StartUpExtensions.AddAuthentication("RootAddresses:Authentication");
-
             return app;
         }
 
