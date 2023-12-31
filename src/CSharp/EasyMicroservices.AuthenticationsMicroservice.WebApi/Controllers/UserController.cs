@@ -19,6 +19,26 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        public override async Task<MessageContract<long>> Add(AddUserRequestContract request, CancellationToken cancellationToken = default)
+        {
+            var userId = await base.Add(request, cancellationToken)
+                .AsCheckedResult();
+
+            var defaultRoles = await UnitOfWork.GetLogic<RegisterUserDefaultRoleEntity>()
+                .GetAll(cancellationToken)
+                .AsCheckedResult();
+
+            if (defaultRoles.Count > 0)
+            {
+                var roles = await UnitOfWork.GetLogic<UserRoleEntity>().AddBulk(defaultRoles.Select(x => new UserRoleEntity()
+                {
+                    RoleId = x.RoleId,
+                    UserId = userId
+                }).ToList()).AsCheckedResult();
+            }
+            return userId;
+        }
+
         [HttpPost]
         public async Task<MessageContract<UserContract>> GetUserByUserName(GetUserByUserNameRequestContract request)
         {

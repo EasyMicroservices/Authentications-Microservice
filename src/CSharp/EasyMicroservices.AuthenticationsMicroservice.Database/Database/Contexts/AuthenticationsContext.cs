@@ -3,7 +3,6 @@ using EasyMicroservices.AuthenticationsMicroservice.SeedData;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
 {
@@ -20,12 +19,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
         public DbSet<RoleServicePermissionEntity> RoleServicePermissions { get; set; }
         public DbSet<RoleParentChildEntity> RoleParentChildren { get; set; }
         public DbSet<PersonalAccessTokenEntity> PersonalAccessTokens { get; set; }
-
+        public DbSet<RegisterUserDefaultRoleEntity> RegisterUserDefaultRoles { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>(model =>
             {
-                model.HasIndex(u => u.UserName)
+                model.HasIndex(u => new { u.BusinessUniqueIdentity, u.UserName })
                 .IsUnique();
             });
 
