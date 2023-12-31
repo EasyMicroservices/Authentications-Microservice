@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Cores.Clients" Version="0.0.0.72" />
+    <PackageReference Include="EasyMicroservices.Cores.Clients" Version="0.0.0.87" />
     <PackageReference Include="Microsoft.Extensions.ApiDescription.Client" Version="7.0.14">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
