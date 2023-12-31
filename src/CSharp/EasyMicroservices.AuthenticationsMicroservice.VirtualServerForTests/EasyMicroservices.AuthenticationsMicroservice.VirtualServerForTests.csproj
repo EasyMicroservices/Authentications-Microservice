@@ -17,7 +17,7 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <IsPackable>true</IsPackable>
-    <Version>0.0.0.5</Version>
+    <Version>0.0.0.6</Version>
     <Description>authentication virtual server for tests</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>authentication,tests,testtemplate,testtemplates,examples,server,testserver,virtual,virtualserver</PackageTags>
