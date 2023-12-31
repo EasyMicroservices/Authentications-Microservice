@@ -5,7 +5,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
 {
     public static class AuthenticationResource
     {
-        public static Dictionary<string, string> GetResources(string microserviceName, Dictionary<string, List<TestServicePermissionContract>> customRoles = default, string uniqueIdentity = "null")
+        public static Dictionary<string, string> GetResources(string microserviceName, Dictionary<string, List<TestServicePermissionContract>> customRoles = default, string uniqueIdentity = default)
         {
             Dictionary<string, string> result = new Dictionary<string, string>();
             if (customRoles == null)
@@ -19,7 +19,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
                      MicroserviceName =  microserviceName,
                 }
             });
-           
+
             foreach (var item in customRoles)
             {
                 ExampleMessageContract response = new ExampleMessageContract()
@@ -27,10 +27,13 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
                     IsSuccess = true,
                     Result = item.Value
                 };
+                var uniqueIdentityResult = "*RequestSkipBody*";
+                if (uniqueIdentity != null)
+                    uniqueIdentityResult = $",\"UniqueIdentity\":{uniqueIdentity}*RequestSkipBody*";
                 result.Add(@$"POST /api/ServicePermission/GetAllPermissionsBy HTTP/1.1
 *RequestSkipBody*
 
-{{""RoleName"":""{item.Key}"",""MicroserviceName"":""{microserviceName}"",""UniqueIdentity"":{uniqueIdentity}}}"
+{{""RoleName"":""{item.Key}"",""MicroserviceName"":""{microserviceName}""{uniqueIdentityResult}}}"
                 ,
                 @$"HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
