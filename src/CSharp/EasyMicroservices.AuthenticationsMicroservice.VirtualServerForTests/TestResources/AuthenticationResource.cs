@@ -30,7 +30,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.VirtualServerForTests.Te
                 result.Add(@$"POST /api/ServicePermission/GetAllPermissionsBy HTTP/1.1
 *RequestSkipBody*
 
-{{""RoleName"":""{item.Key}"",""MicroserviceName"":""{microserviceName}"",""UniqueIdentity"":{UniqueIdentity}}}"
+{{""RoleName"":""{item.Key}"",""MicroserviceName"":""{microserviceName}"",""UniqueIdentity"":{item.UniqueIdentity}}}"
                 ,
                 @$"HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
