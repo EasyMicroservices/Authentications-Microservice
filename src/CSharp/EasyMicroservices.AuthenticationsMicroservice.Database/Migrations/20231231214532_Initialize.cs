@@ -218,16 +218,16 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "Name", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9578), null, false, null, "Owner", null },
-                    { 2L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9598), null, false, null, "SystemAdmin", null },
-                    { 3L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9599), null, false, null, "SuperAdmin", null },
-                    { 4L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9601), null, false, null, "HardWriter", null },
-                    { 5L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9603), null, false, null, "Moderator", null },
-                    { 6L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9604), null, false, null, "HardReader", null },
-                    { 7L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9606), null, false, null, "Operator", null },
-                    { 8L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9607), null, false, null, "EndUser", null },
-                    { 9L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9609), null, false, null, "SoftWriter", null },
-                    { 10L, new DateTime(2023, 12, 30, 23, 16, 0, 378, DateTimeKind.Local).AddTicks(9611), null, false, null, "SoftReader", null }
+                    { 1L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8814), null, false, null, "Owner", null },
+                    { 2L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8829), null, false, null, "SystemAdmin", null },
+                    { 3L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8830), null, false, null, "SuperAdmin", null },
+                    { 4L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8830), null, false, null, "HardWriter", null },
+                    { 5L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8830), null, false, null, "Moderator", null },
+                    { 6L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8831), null, false, null, "HardReader", null },
+                    { 7L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8831), null, false, null, "Operator", null },
+                    { 8L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8832), null, false, null, "EndUser", null },
+                    { 9L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8832), null, false, null, "SoftWriter", null },
+                    { 10L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8832), null, false, null, "SoftReader", null }
                 });
 
             migrationBuilder.InsertData(
@@ -235,47 +235,47 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 columns: new[] { "Id", "AccessType", "CreationDateTime", "DeletedDateTime", "IsDeleted", "MethodName", "MicroserviceName", "ModificationDateTime", "ServiceName", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(444), null, false, null, null, null, null, null },
-                    { 2L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(447), null, false, "GetById", null, null, null, null },
-                    { 3L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(448), null, false, "Filter", null, null, null, null },
-                    { 4L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(449), null, false, "GetByUniqueIdentity", null, null, null, null },
-                    { 5L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(450), null, false, "GetAllByUniqueIdentity", null, null, null, null },
-                    { 6L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(450), null, false, "GetAll", null, null, null, null },
-                    { 7L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(451), null, false, "Add", null, null, null, null },
-                    { 8L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(451), null, false, "Update", null, null, null, null },
-                    { 9L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(452), null, false, "SoftDeleteById", null, null, null, null },
-                    { 10L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(452), null, false, "SoftDeleteBulkByIds", null, null, null, null },
-                    { 11L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453), null, false, "AddBulk", null, null, null, null },
-                    { 12L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453), null, false, "UpdateBulk", null, null, null, null },
-                    { 13L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(453), null, false, "HardDeleteById", null, null, null, null },
-                    { 14L, (byte)6, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(454), null, false, "HardDeleteBulkByIds", null, null, null, null }
+                    { 1L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9054), null, false, null, null, null, null, null },
+                    { 2L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9054), null, false, "GetById", null, null, null, null },
+                    { 3L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9055), null, false, "Filter", null, null, null, null },
+                    { 4L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9055), null, false, "GetByUniqueIdentity", null, null, null, null },
+                    { 5L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9055), null, false, "GetAllByUniqueIdentity", null, null, null, null },
+                    { 6L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9056), null, false, "GetAll", null, null, null, null },
+                    { 7L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9056), null, false, "Add", null, null, null, null },
+                    { 8L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9057), null, false, "Update", null, null, null, null },
+                    { 9L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9057), null, false, "SoftDeleteById", null, null, null, null },
+                    { 10L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9057), null, false, "SoftDeleteBulkByIds", null, null, null, null },
+                    { 11L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9058), null, false, "AddBulk", null, null, null, null },
+                    { 12L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9058), null, false, "UpdateBulk", null, null, null, null },
+                    { 13L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9058), null, false, "HardDeleteById", null, null, null, null },
+                    { 14L, (byte)6, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9059), null, false, "HardDeleteBulkByIds", null, null, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "BusinessUniqueIdentity", "CreationDateTime", "DeletedDateTime", "IsDeleted", "IsVerified", "ModificationDateTime", "Password", "UniqueIdentity", "UserName" },
-                values: new object[] { 1L, "1-2", new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(773), null, false, true, null, null, "1-2", "Owner" });
+                values: new object[] { 1L, "1-2", new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9112), null, false, true, null, null, "1-2", "Owner" });
 
             migrationBuilder.InsertData(
                 table: "PersonalAccessTokens",
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "UniqueIdentity", "UserId", "Value" },
-                values: new object[] { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(878), null, false, null, null, 1L, "ownerpat" });
+                values: new object[] { 1L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9139), null, false, null, null, 1L, "ownerpat" });
 
             migrationBuilder.InsertData(
                 table: "RoleParentChildren",
                 columns: new[] { "ChildId", "ParentId", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 2L, 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(254), null, false, null, null },
-                    { 3L, 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(256), null, false, null, null },
-                    { 4L, 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(257), null, false, null, null },
-                    { 9L, 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(260), null, false, null, null },
-                    { 5L, 3L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(257), null, false, null, null },
-                    { 6L, 3L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(258), null, false, null, null },
-                    { 7L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(258), null, false, null, null },
-                    { 8L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(259), null, false, null, null },
-                    { 9L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(259), null, false, null, null },
-                    { 10L, 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(260), null, false, null, null }
+                    { 2L, 1L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8983), null, false, null, null },
+                    { 2L, 3L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8984), null, false, null, null },
+                    { 2L, 4L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8984), null, false, null, null },
+                    { 3L, 5L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8985), null, false, null, null },
+                    { 3L, 6L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8985), null, false, null, null },
+                    { 5L, 7L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8985), null, false, null, null },
+                    { 5L, 8L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8986), null, false, null, null },
+                    { 2L, 9L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8987), null, false, null, null },
+                    { 5L, 9L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8986), null, false, null, null },
+                    { 5L, 10L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(8986), null, false, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -283,26 +283,26 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "RoleId", "ServicePermissionId", "UniqueIdentity" },
                 values: new object[,]
                 {
-                    { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(539), null, false, null, 1L, 1L, null },
-                    { 2L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(540), null, false, null, 10L, 2L, null },
-                    { 3L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(541), null, false, null, 10L, 3L, null },
-                    { 4L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(541), null, false, null, 10L, 4L, null },
-                    { 5L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542), null, false, null, 6L, 5L, null },
-                    { 6L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542), null, false, null, 6L, 6L, null },
-                    { 7L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(542), null, false, null, 9L, 7L, null },
-                    { 8L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(543), null, false, null, 9L, 8L, null },
-                    { 9L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(543), null, false, null, 9L, 9L, null },
-                    { 10L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(544), null, false, null, 9L, 10L, null },
-                    { 11L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(544), null, false, null, 9L, 11L, null },
-                    { 12L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(545), null, false, null, 9L, 12L, null },
-                    { 13L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(545), null, false, null, 4L, 13L, null },
-                    { 14L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(546), null, false, null, 4L, 14L, null }
+                    { 1L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9088), null, false, null, 1L, 1L, null },
+                    { 2L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9088), null, false, null, 10L, 2L, null },
+                    { 3L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9088), null, false, null, 10L, 3L, null },
+                    { 4L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9089), null, false, null, 10L, 4L, null },
+                    { 5L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9089), null, false, null, 6L, 5L, null },
+                    { 6L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9090), null, false, null, 6L, 6L, null },
+                    { 7L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9090), null, false, null, 9L, 7L, null },
+                    { 8L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9090), null, false, null, 9L, 8L, null },
+                    { 9L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9091), null, false, null, 9L, 9L, null },
+                    { 10L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9091), null, false, null, 9L, 10L, null },
+                    { 11L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9091), null, false, null, 9L, 11L, null },
+                    { 12L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9092), null, false, null, 9L, 12L, null },
+                    { 13L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9092), null, false, null, 4L, 13L, null },
+                    { 14L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9092), null, false, null, 4L, 14L, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "UserRoles",
                 columns: new[] { "Id", "CreationDateTime", "DeletedDateTime", "IsDeleted", "ModificationDateTime", "RoleId", "UniqueIdentity", "UserId" },
-                values: new object[] { 1L, new DateTime(2023, 12, 30, 23, 16, 0, 379, DateTimeKind.Local).AddTicks(847), null, false, null, 1L, "1-2", 1L });
+                values: new object[] { 1L, new DateTime(2024, 1, 1, 1, 15, 32, 369, DateTimeKind.Local).AddTicks(9126), null, false, null, 1L, "1-2", 1L });
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonalAccessTokens_CreationDateTime",
