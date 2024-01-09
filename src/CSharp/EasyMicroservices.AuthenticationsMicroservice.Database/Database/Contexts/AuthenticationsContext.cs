@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
+﻿using EasyMicroservices.AuthenticationsMicroservice.Database.Builders;
+using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.AuthenticationsMicroservice.SeedData;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
@@ -23,47 +24,9 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<UserEntity>(model =>
-            {
-                model.HasIndex(u => new { u.BusinessUniqueIdentity, u.UserName })
-                .IsUnique();
-            });
-
-            modelBuilder.Entity<RoleServicePermissionEntity>(model =>
-            {
-                model.HasKey(u => new { u.RoleId, u.ServicePermissionId });
-            });
-
-            modelBuilder.Entity<UserRoleEntity>(model =>
-            {
-                model.HasKey(u => new { u.RoleId, u.UserId });
-            });
-
-            modelBuilder.Entity<ServicePermissionEntity>(model =>
-            {
-                model.HasIndex(u => u.MicroserviceName);
-                model.HasIndex(u => u.ServiceName);
-                model.HasIndex(u => u.MethodName);
-                model.HasIndex(u => new { u.MicroserviceName, u.ServiceName, u.MethodName }).IsUnique();
-            });
-
-            modelBuilder.Entity<RoleParentChildEntity>(model =>
-            {
-                model.HasKey(u => new { u.ParentId, u.ChildId });
-
-                model.HasOne(u => u.Parent)
-                .WithMany(u => u.Parents)
-                .HasForeignKey(u => u.ParentId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-                model.HasOne(u => u.Child)
-                .WithMany(u => u.Children)
-                .HasForeignKey(u => u.ChildId)
-                .OnDelete(DeleteBehavior.Restrict);
-            });
-
+            new AuthenticationDatabaseBuilder().OnModelCreating(modelBuilder);
             var result = base.AutoModelCreating(modelBuilder);
-            AllSeedData.Seed(modelBuilder);
+            AuthenticationsSeedData.Seed(modelBuilder);
         }
     }
 }

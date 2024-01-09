@@ -2,12 +2,13 @@
 using EasyMicroservices.AuthenticationsMicroservice.Contracts.Requests;
 using EasyMicroservices.AuthenticationsMicroservice.Database.Entities;
 using EasyMicroservices.Cores.AspCoreApi;
-using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 {

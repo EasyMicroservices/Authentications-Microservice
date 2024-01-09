@@ -1,7 +1,9 @@
 using EasyMicroservices.AuthenticationsMicroservice.Database.Contexts;
+using EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
 {
@@ -23,6 +25,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
             app.Services.AddTransient(serviceProvider => new AuthenticationsContext(serviceProvider.GetService<IEntityFrameworkCoreDatabaseBuilder>()));
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
             app.Services.AddTransient<IBaseUnitOfWork, UnitOfWork>();
+            app.Services.AddMvc()
+                .AddApplicationPart(typeof(RoleController).Assembly);
             return app;
         }
 

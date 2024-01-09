@@ -8,6 +8,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.14" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.14">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.StartUp\EasyMicroservices.AuthenticationsMicroservice.StartUp.csproj" />
+    <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.Module\EasyMicroservices.AuthenticationsMicroservice.Module.csproj" />
   </ItemGroup>
 
 	<ItemGroup>
