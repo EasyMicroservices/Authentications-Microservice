@@ -7,6 +7,9 @@ using EasyMicroservices.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
 {
@@ -33,7 +36,8 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
                 var roles = await UnitOfWork.GetLogic<UserRoleEntity>().AddBulk(defaultRoles.Select(x => new UserRoleEntity()
                 {
                     RoleId = x.RoleId,
-                    UserId = userId
+                    UserId = userId,
+                    UniqueIdentity = request.UniqueIdentity
                 }).ToList()).AsCheckedResult();
             }
             return userId;

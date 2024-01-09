@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace EasyMicroservices.AuthenticationsMicroservice
+namespace EasyMicroservices.AuthenticationsMicroservice.WebApi
 {
     public class DatabaseBuilder : EntityFrameworkCoreDatabaseBuilder
     {

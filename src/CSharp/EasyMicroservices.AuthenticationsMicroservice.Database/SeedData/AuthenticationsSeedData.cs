@@ -5,7 +5,7 @@ using System;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
 {
-    public static class AllSeedData
+    public static class AuthenticationsSeedData
     {
         public static void Seed(ModelBuilder modelBuilder)
         {

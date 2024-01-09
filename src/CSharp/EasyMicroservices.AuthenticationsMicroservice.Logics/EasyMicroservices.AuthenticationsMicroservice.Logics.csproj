@@ -1,8 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+    <Authors>EasyMicroservices</Authors>
+    <Version>0.0.0.1</Version>
+    <Description>Authentications Microservice</Description>
+    <Copyright>EasyMicroservices@gmail.com</Copyright>
+    <PackageTags>module,logics,asp,aspnet,auth,authentication,authentications</PackageTags>
+    <PackageProjectUrl>https://github.com/EasyMicroservices/Cores</PackageProjectUrl>
+    <LangVersion>latest</LangVersion>
     <RootNamespace>EasyMicroservices.AuthenticationsMicroservice</RootNamespace>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
   
   <ItemGroup>
