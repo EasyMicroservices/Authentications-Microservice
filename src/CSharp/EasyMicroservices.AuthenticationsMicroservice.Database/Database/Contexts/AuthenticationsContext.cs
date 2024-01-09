@@ -21,7 +21,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Database.Contexts
         public DbSet<RoleParentChildEntity> RoleParentChildren { get; set; }
         public DbSet<PersonalAccessTokenEntity> PersonalAccessTokens { get; set; }
         public DbSet<RegisterUserDefaultRoleEntity> RegisterUserDefaultRoles { get; set; }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new AuthenticationDatabaseBuilder().OnModelCreating(modelBuilder);

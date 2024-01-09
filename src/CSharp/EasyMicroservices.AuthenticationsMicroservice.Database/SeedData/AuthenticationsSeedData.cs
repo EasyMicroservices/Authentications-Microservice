@@ -385,7 +385,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                     Id = 1,
                     UserId = 1,
                     RoleId = 1,
-                    UniqueIdentity =  "1-2"
+                    UniqueIdentity = "1-2"
                 }));
 
             modelBuilder
