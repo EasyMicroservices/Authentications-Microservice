@@ -47,14 +47,6 @@ public static class AuthenticationRouting
         ConfigureServices(services, prefix);
         ConfigurSwagger(services, prefix);
     }
-
-    public static void ConfigurSwagger(WebApplication app, string name = "Authentication")
-    {
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint($"/swagger/{name}/swagger.json", $"API Group {name}");
-        });
-    }
 }
 
 public class RoutePrefixConvention : IApplicationModelConvention

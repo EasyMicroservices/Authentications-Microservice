@@ -4,7 +4,7 @@
     <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
-    <Version>0.0.0.3</Version>
+    <Version>0.0.0.4</Version>
     <Description>Authentications Microservice</Description>
     <Copyright>EasyMicroservices@gmail.com</Copyright>
     <PackageTags>module,domain,services,asp,aspnet,auth,authentication,authentications</PackageTags>
@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.95" />
+    <PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.96" />
   </ItemGroup>
 
 </Project>
