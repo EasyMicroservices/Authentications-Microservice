@@ -1,8 +1,10 @@
 ﻿using EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using System.Linq;
 
 namespace EasyMicroservices.AuthenticationsMicroservice.Module;
@@ -15,7 +17,7 @@ public static class AuthenticationRouting
         {
             mvcBuilder = services.AddControllersWithViews(options =>
             {
-                options.Conventions.Add(new RoutePrefixConvention(new RouteAttribute("authentication")));
+                options.Conventions.Add(new RoutePrefixConvention(new RouteAttribute(prefix)));
             });
         }
         else
@@ -23,6 +25,35 @@ public static class AuthenticationRouting
             mvcBuilder = services.AddMvc();
         }
         mvcBuilder.AddApplicationPart(typeof(RoleController).Assembly);
+    }
+
+    public static void ConfigurSwagger(IServiceCollection services, string name = "Authentication")
+    {
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc(name, new OpenApiInfo { Title = $"{name} Module", Version = "v1" });
+        });
+        services.AddMvc(c =>
+        {
+            c.Conventions.Add(new ApiExplorerGroupPerVersionConvention()
+            {
+                Prefix = name
+            });
+        });
+    }
+
+    public static void ConfigureAll(IServiceCollection services, string prefix = "Authentication")
+    {
+        ConfigureServices(services, prefix);
+        ConfigurSwagger(services, prefix);
+    }
+
+    public static void ConfigurSwagger(WebApplication app, string name = "Authentication")
+    {
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint($"/swagger/{name}/swagger.json", $"API Group {name}");
+        });
     }
 }
 
@@ -56,5 +87,14 @@ public class RoutePrefixConvention : IApplicationModelConvention
                 });
             }
         }
+    }
+}
+public class ApiExplorerGroupPerVersionConvention : IControllerModelConvention
+{
+    public string Prefix { get; set; }
+    public void Apply(ControllerModel controller)
+    {
+        if (controller.ControllerType.Assembly == typeof(RoleController).Assembly)
+            controller.ApiExplorer.GroupName = Prefix;
     }
 }
