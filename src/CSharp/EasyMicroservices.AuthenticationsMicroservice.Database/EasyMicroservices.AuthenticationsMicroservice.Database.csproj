@@ -1,7 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   
+  <Choose>
+    <When Condition="$(SolutionFileName.Contains('-net'))">
+      <PropertyGroup>
+        <TargetFramework>$(SolutionFileName.Split('-')[1].Replace('.sln',''))</TargetFramework>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
     <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>EasyMicroservices</Authors>
     <Version>0.0.0.4</Version>
@@ -18,11 +30,26 @@
     <Folder Include="Database\Documents\" />
   </ItemGroup>
   
-  <ItemGroup>
-	  <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.3" />
-	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.15" />
+  <PropertyGroup>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.15" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net6.0'">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.26" />
   </ItemGroup>
   
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.3" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.AuthenticationsMicroservice.Domain\EasyMicroservices.AuthenticationsMicroservice.Domain.csproj" />
   </ItemGroup>
