@@ -19,7 +19,7 @@ namespace EasyMicroservices.AuthenticationsMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<MessageContract> GetValidToken(GetValidTokenRequestContract request)
+        public async Task<MessageContract<ResetPasswordTokenContract>> GetValidToken(GetValidTokenRequestContract request)
         {
             return await _unitOfWork.GetContractLogic<ResetPasswordTokenEntity, ResetPasswordTokenContract, long>().GetBy(x => x.Token.Equals(request.Token) && !x.HasConsumed && !x.IsDeleted && x.ExpirationDateTime >= DateTime.Now);
         }
