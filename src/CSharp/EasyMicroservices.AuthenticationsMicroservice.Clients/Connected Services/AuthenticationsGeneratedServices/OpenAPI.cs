@@ -11216,7 +11216,9 @@ namespace Authentications.GeneratedServices
 
         OnlyParent = 6,
 
-        OnlyChilren = 7,
+        OnlyChildren = 7,
+
+        Equals = 8,
 
     }
 
