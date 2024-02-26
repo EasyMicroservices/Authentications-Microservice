@@ -381,12 +381,12 @@ namespace EasyMicroservices.AuthenticationsMicroservice.Migrations
                 column: "CreationDateTime",
                 value: new DateTime(2024, 2, 26, 13, 16, 15, 335, DateTimeKind.Local).AddTicks(3599));
 
-            migrationBuilder.UpdateData(
-                table: "Users",
-                keyColumn: "Id",
-                keyValue: 1L,
-                columns: new[] { "CreationDateTime", "Password", "UniqueIdentity", "UserName" },
-                values: new object[] { new DateTime(2024, 2, 26, 13, 16, 15, 335, DateTimeKind.Local).AddTicks(3588), "8094fd276b937d38e75cec61a91ec84781d1000f0ba290448e8ce931b6a5bbfd", "1-2-d-1", "MahdiyarGHD" });
+            //migrationBuilder.UpdateData(
+            //    table: "Users",
+            //    keyColumn: "Id",
+            //    keyValue: 1L,
+            //    columns: new[] { "CreationDateTime", "Password", "UniqueIdentity", "UserName" },
+            //    values: new object[] { new DateTime(2024, 2, 26, 13, 16, 15, 335, DateTimeKind.Local).AddTicks(3588), "8094fd276b937d38e75cec61a91ec84781d1000f0ba290448e8ce931b6a5bbfd", "1-2-d-1", "MahdiyarGHD" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ResetPasswordTokens_CreationDateTime",

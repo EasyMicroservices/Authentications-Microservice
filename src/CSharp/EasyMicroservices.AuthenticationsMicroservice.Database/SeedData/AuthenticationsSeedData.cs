@@ -372,11 +372,10 @@ namespace EasyMicroservices.AuthenticationsMicroservice.SeedData
                 .HasData(FixDefaultValues(new UserEntity()
                 {
                     Id = 1,
-                    UserName = "MahdiyarGHD",
+                    UserName = "Owner",
                     IsVerified = true,
-                    Password = "8094fd276b937d38e75cec61a91ec84781d1000f0ba290448e8ce931b6a5bbfd",
                     BusinessUniqueIdentity = "1-2",
-                    UniqueIdentity = "1-2-d-1"
+                    UniqueIdentity = "1-2"
                 }));
 
             modelBuilder
