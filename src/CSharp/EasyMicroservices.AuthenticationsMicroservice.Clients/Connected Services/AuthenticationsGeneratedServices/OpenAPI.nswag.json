@@ -770,6 +770,820 @@
         }
       }
     },
+    "/api/ResetPasswordToken/GetValidToken": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "GetValidToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetValidTokenRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetValidTokenRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetValidTokenRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/Add": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "Add2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/AddBulk": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "AddBulk2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractCreateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractCreateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractCreateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/Update": {
+      "put": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "Update2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/UpdateChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "UpdateChangedValuesOnly2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/UpdateBulk": {
+      "put": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "UpdateBulk2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/UpdateBulkChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "UpdateBulkChangedValuesOnly2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordTokenContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/HardDeleteById": {
+      "delete": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "HardDeleteById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/HardDeleteBulkByIds": {
+      "delete": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "HardDeleteBulkByIds2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "SoftDeleteById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/SoftDeleteBulkByIds": {
+      "delete": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "SoftDeleteBulkByIds2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/GetById": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "GetById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/GetByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "GetByUniqueIdentity2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/GetBy": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "GetBy2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/Filter": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "Filter2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/GetAll": {
+      "get": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "GetAll2",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ResetPasswordToken/GetAllByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "ResetPasswordToken"
+        ],
+        "operationId": "GetAllByUniqueIdentity2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResetPasswordTokenContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Role/GetRolesByUserId": {
       "post": {
         "tags": [
@@ -824,7 +1638,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "Add2",
+        "operationId": "Add3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -873,7 +1687,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "AddBulk2",
+        "operationId": "AddBulk3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -922,7 +1736,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "Update2",
+        "operationId": "Update3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -971,7 +1785,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "UpdateChangedValuesOnly2",
+        "operationId": "UpdateChangedValuesOnly3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1020,7 +1834,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "UpdateBulk2",
+        "operationId": "UpdateBulk3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1069,7 +1883,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "UpdateBulkChangedValuesOnly2",
+        "operationId": "UpdateBulkChangedValuesOnly3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1118,7 +1932,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "HardDeleteById2",
+        "operationId": "HardDeleteById3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1167,7 +1981,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "HardDeleteBulkByIds2",
+        "operationId": "HardDeleteBulkByIds3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1216,7 +2030,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "SoftDeleteById2",
+        "operationId": "SoftDeleteById3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1265,7 +2079,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "SoftDeleteBulkByIds2",
+        "operationId": "SoftDeleteBulkByIds3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1314,7 +2128,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "GetById2",
+        "operationId": "GetById3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1363,7 +2177,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "GetByUniqueIdentity2",
+        "operationId": "GetByUniqueIdentity3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1412,7 +2226,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "GetBy2",
+        "operationId": "GetBy3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1461,7 +2275,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "Filter2",
+        "operationId": "Filter3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1510,7 +2324,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "GetAll2",
+        "operationId": "GetAll3",
         "responses": {
           "200": {
             "description": "Success",
@@ -1540,7 +2354,7 @@
         "tags": [
           "Role"
         ],
-        "operationId": "GetAllByUniqueIdentity2",
+        "operationId": "GetAllByUniqueIdentity3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1589,7 +2403,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "Add3",
+        "operationId": "Add4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1638,7 +2452,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "AddBulk3",
+        "operationId": "AddBulk4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1687,7 +2501,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "Update3",
+        "operationId": "Update4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1736,7 +2550,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "UpdateChangedValuesOnly3",
+        "operationId": "UpdateChangedValuesOnly4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1785,7 +2599,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "UpdateBulk3",
+        "operationId": "UpdateBulk4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1834,7 +2648,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "UpdateBulkChangedValuesOnly3",
+        "operationId": "UpdateBulkChangedValuesOnly4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1883,7 +2697,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "HardDeleteById3",
+        "operationId": "HardDeleteById4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1932,7 +2746,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "HardDeleteBulkByIds3",
+        "operationId": "HardDeleteBulkByIds4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1981,7 +2795,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "SoftDeleteById3",
+        "operationId": "SoftDeleteById4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2030,7 +2844,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "SoftDeleteBulkByIds3",
+        "operationId": "SoftDeleteBulkByIds4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2079,7 +2893,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "GetById3",
+        "operationId": "GetById4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2128,7 +2942,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "GetByUniqueIdentity3",
+        "operationId": "GetByUniqueIdentity4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2177,7 +2991,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "GetBy3",
+        "operationId": "GetBy4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2226,7 +3040,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "Filter3",
+        "operationId": "Filter4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2275,7 +3089,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "GetAll3",
+        "operationId": "GetAll4",
         "responses": {
           "200": {
             "description": "Success",
@@ -2305,7 +3119,7 @@
         "tags": [
           "RoleServicePermission"
         ],
-        "operationId": "GetAllByUniqueIdentity3",
+        "operationId": "GetAllByUniqueIdentity4",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2403,7 +3217,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "Add4",
+        "operationId": "Add5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2452,7 +3266,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "AddBulk4",
+        "operationId": "AddBulk5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2501,7 +3315,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "Update4",
+        "operationId": "Update5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2550,7 +3364,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "UpdateChangedValuesOnly4",
+        "operationId": "UpdateChangedValuesOnly5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2599,7 +3413,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "UpdateBulk4",
+        "operationId": "UpdateBulk5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2648,7 +3462,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "UpdateBulkChangedValuesOnly4",
+        "operationId": "UpdateBulkChangedValuesOnly5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2697,7 +3511,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "HardDeleteById4",
+        "operationId": "HardDeleteById5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2746,7 +3560,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "HardDeleteBulkByIds4",
+        "operationId": "HardDeleteBulkByIds5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2795,7 +3609,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "SoftDeleteById4",
+        "operationId": "SoftDeleteById5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2844,7 +3658,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "SoftDeleteBulkByIds4",
+        "operationId": "SoftDeleteBulkByIds5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2893,7 +3707,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "GetById4",
+        "operationId": "GetById5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2942,7 +3756,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "GetByUniqueIdentity4",
+        "operationId": "GetByUniqueIdentity5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2991,7 +3805,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "GetBy4",
+        "operationId": "GetBy5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3040,7 +3854,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "Filter4",
+        "operationId": "Filter5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3089,7 +3903,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "GetAll4",
+        "operationId": "GetAll5",
         "responses": {
           "200": {
             "description": "Success",
@@ -3119,7 +3933,7 @@
         "tags": [
           "ServicePermission"
         ],
-        "operationId": "GetAllByUniqueIdentity4",
+        "operationId": "GetAllByUniqueIdentity5",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3168,7 +3982,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "Add5",
+        "operationId": "Add6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3364,7 +4178,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "AddBulk5",
+        "operationId": "AddBulk6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3413,7 +4227,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "Update5",
+        "operationId": "Update6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3462,7 +4276,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "UpdateChangedValuesOnly5",
+        "operationId": "UpdateChangedValuesOnly6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3511,7 +4325,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "UpdateBulk5",
+        "operationId": "UpdateBulk6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3560,7 +4374,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "UpdateBulkChangedValuesOnly5",
+        "operationId": "UpdateBulkChangedValuesOnly6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3609,7 +4423,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "HardDeleteById5",
+        "operationId": "HardDeleteById6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3658,7 +4472,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "HardDeleteBulkByIds5",
+        "operationId": "HardDeleteBulkByIds6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3707,7 +4521,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "SoftDeleteById5",
+        "operationId": "SoftDeleteById6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3756,7 +4570,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "SoftDeleteBulkByIds5",
+        "operationId": "SoftDeleteBulkByIds6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3805,7 +4619,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "GetById5",
+        "operationId": "GetById6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3854,7 +4668,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "GetByUniqueIdentity5",
+        "operationId": "GetByUniqueIdentity6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3903,7 +4717,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "GetBy5",
+        "operationId": "GetBy6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3952,7 +4766,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "Filter5",
+        "operationId": "Filter6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4001,7 +4815,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "GetAll5",
+        "operationId": "GetAll6",
         "responses": {
           "200": {
             "description": "Success",
@@ -4031,7 +4845,7 @@
         "tags": [
           "User"
         ],
-        "operationId": "GetAllByUniqueIdentity5",
+        "operationId": "GetAllByUniqueIdentity6",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4080,7 +4894,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "Add6",
+        "operationId": "Add7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4129,7 +4943,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "AddBulk6",
+        "operationId": "AddBulk7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4178,7 +4992,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "Update6",
+        "operationId": "Update7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4227,7 +5041,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "UpdateChangedValuesOnly6",
+        "operationId": "UpdateChangedValuesOnly7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4276,7 +5090,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "UpdateBulk6",
+        "operationId": "UpdateBulk7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4325,7 +5139,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "UpdateBulkChangedValuesOnly6",
+        "operationId": "UpdateBulkChangedValuesOnly7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4374,7 +5188,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "HardDeleteById6",
+        "operationId": "HardDeleteById7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4423,7 +5237,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "HardDeleteBulkByIds6",
+        "operationId": "HardDeleteBulkByIds7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4472,7 +5286,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "SoftDeleteById6",
+        "operationId": "SoftDeleteById7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4521,7 +5335,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "SoftDeleteBulkByIds6",
+        "operationId": "SoftDeleteBulkByIds7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4570,7 +5384,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "GetById6",
+        "operationId": "GetById7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4619,7 +5433,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "GetByUniqueIdentity6",
+        "operationId": "GetByUniqueIdentity7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4668,7 +5482,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "GetBy6",
+        "operationId": "GetBy7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4717,7 +5531,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "Filter6",
+        "operationId": "Filter7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -4766,7 +5580,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "GetAll6",
+        "operationId": "GetAll7",
         "responses": {
           "200": {
             "description": "Success",
@@ -4796,7 +5610,7 @@
         "tags": [
           "UserRole"
         ],
-        "operationId": "GetAllByUniqueIdentity6",
+        "operationId": "GetAllByUniqueIdentity7",
         "requestBody": {
           "content": {
             "application/json": {
@@ -5291,6 +6105,16 @@
           }
         }
       },
+      "GetValidTokenRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "token": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "Int64DeleteBulkRequestContract": {
         "title": "DeleteBulkRequestContract<Int64>",
         "type": "object",
@@ -5525,6 +6349,112 @@
           "value": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "ResetPasswordTokenContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "token": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasConsumed": {
+            "type": "boolean"
+          },
+          "expirationDateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ResetPasswordTokenContractCreateBulkRequestContract": {
+        "title": "CreateBulkRequestContract<ResetPasswordTokenContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "title": "List<ResetPasswordTokenContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ResetPasswordTokenContract"
+            }
+          }
+        }
+      },
+      "ResetPasswordTokenContractListMessageContract": {
+        "title": "ListMessageContract<ResetPasswordTokenContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "success": {
+            "$ref": "#/components/schemas/SuccessContract"
+          },
+          "result": {
+            "title": "List<ResetPasswordTokenContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ResetPasswordTokenContract"
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hasItems": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        }
+      },
+      "ResetPasswordTokenContractMessageContract": {
+        "title": "MessageContract<ResetPasswordTokenContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "success": {
+            "$ref": "#/components/schemas/SuccessContract"
+          },
+          "result": {
+            "$ref": "#/components/schemas/ResetPasswordTokenContract"
+          }
+        }
+      },
+      "ResetPasswordTokenContractUpdateBulkRequestContract": {
+        "title": "UpdateBulkRequestContract<ResetPasswordTokenContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "title": "List<ResetPasswordTokenContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/ResetPasswordTokenContract"
+            }
           }
         }
       },
